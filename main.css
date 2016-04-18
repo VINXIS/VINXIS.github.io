@@ -1,1 +1,4 @@
-
+@font-face {font-family:text; src:url(AvenirLTStd-Light.woff)}
+body {background-color:black;}
+h1   {color:orange;}
+p    {text-align:center; vertical-align: middle; font-family:text; color:white;}
