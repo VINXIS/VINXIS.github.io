@@ -8,18 +8,17 @@ body {
   background-color:black;
 }
 div {
-  width:100%; 
-  height:100%; 
   font-family:text; 
   color:white;
 }
-#centre {
-  position: absolute;
-  top:0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
+#centre-parent {
+  display:table;
+  height:300px;
+  text-align:center;
+}
+#centre-child {
+  display:table-cell;
+  vertical-align:middle;
 }
 h1 {
   color:orange;
