@@ -13,10 +13,12 @@ div {
   font-family:text; 
   color:white;
 }
-#text {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+#wordz {
+  position:relative;
+  top:50%;
+  -webkit-transform:translateY(-50%);
+  -ms-transform:translateY(-50%);
+  transform:translateY(-50%);
 }
 h1 {
   color:orange;
