@@ -1,7 +1,6 @@
 @font-face {font-family:text; src:url(AvenirLTStd-Light.woff)}
-.parent {display:table;}
-.child { display: table-cell; vertical-align: middle;}
-* {margin:0;}
-div {width: 100%; height: 100%; font-family:text; color:white;}
 body {height:100%; width:100%; background-color:black;}
+div {width:100%; height:100%; font-family:text; color:white;}
+#parent {display:table;}
+#child { display: table-cell; vertical-align: middle; text-align:center;}
 h1   {color:orange;}
