@@ -32,6 +32,9 @@ div {
   vertical-align: middle;
   text-align: center;
 }
+.meme {
+  padding: 5% 15px;
+}
 h1 {
   color:orange;
 }
