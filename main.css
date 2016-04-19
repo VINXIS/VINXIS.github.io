@@ -11,7 +11,9 @@ html {
   width:100%;
 }
 body {
-  background-image: url(hajime mashou.jpg);
+  background-image: url(hajimemashou.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
   height:100%; 
   width:100%; 
   margin: 0 auto;
