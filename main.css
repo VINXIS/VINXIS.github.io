@@ -19,7 +19,7 @@ body {
 }
 div {
   font-family:text; 
-  color:black;
+  color:white;
 }
 .container {
   animation-name: fade;
