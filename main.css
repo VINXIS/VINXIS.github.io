@@ -58,6 +58,25 @@ div {
 .meme {
   padding: 1%;
 }
+#button {
+  position:relative;
+  height:281px;
+  width:450px;
+  margin:0 auto;
+}
+
+#button img {
+  position:absolute;
+  left:0;
+  -webkit-transition: opacity 0.2s ease-in-out;
+  -moz-transition: opacity 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+}
+
+#button img.top:hover {
+  opacity:0;
+}
 h1 {
   color:orange;
 }
