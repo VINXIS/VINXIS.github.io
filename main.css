@@ -12,6 +12,9 @@ html {
   width:100%;
 }
 body {
+  animation-name: fade;
+  animation-duration: 2s;
+  animation-timing-function:ease-out;
   height:100%; 
   width:100%; 
   margin: 0 auto;
@@ -51,9 +54,6 @@ div {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
-  animation-name: fade;
-  animation-duration: 2s;
-  animation-timing-function:ease-out;
 }
 .meme {
   padding: 1%;
