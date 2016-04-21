@@ -78,6 +78,9 @@ div {
 #button img.top:hover {
   opacity:0;
 }
+a[href^="https"] {
+  padding: 5px 0%;
+}
 h1 {
   color:orange;
 }
