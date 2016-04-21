@@ -59,6 +59,8 @@ div {
   padding: 1%;
 }
 #button {
+  animation-name: fade;
+  animation-delay:2s;
   position:relative;
   margin:0 auto;
 }
