@@ -60,12 +60,11 @@ div {
   transition: opacity 0.2s ease-in-out;
   height:64px;
 }
-
 #button img.top:hover {
   opacity:0;
 }
 #buttonpadding {
-  padding: 0% 0% 84px;
+  padding: 0% 0% 84px 0%;
 }
 h1 {
   color:orange;
