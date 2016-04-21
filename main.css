@@ -47,8 +47,9 @@ div {
 }
 #button {
   animation-delay:2s;
-  position:relative;
+  position:fixed;
   margin:0 auto;
+  width:84px;
 }
 #button img {
   position:absolute;
