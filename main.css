@@ -63,6 +63,9 @@ div {
 #button img.top:hover {
   opacity:0;
 }
+img[src^="8wPQd83"] {
+  height:256px;
+}
 #buttonpadding {
   padding: 0% 0% 84px 0%;
 }
