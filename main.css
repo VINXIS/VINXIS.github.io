@@ -43,7 +43,7 @@ body {
 }
 #button {
   animation-delay:2s;
-  position:fixed;
+  position:absolute;
   margin:0 auto;
   width:84px;
 }
@@ -74,7 +74,11 @@ h1 {
 .scrolldown {
   background-color:#d8d8d8;
   top:100%;
-  height:100%
-  width:100%;
-  position:absolute;
+  width: 100%;
+  position: absolute;
+  margin: 0 auto;
+}
+p {
+  font-family:text; 
+  color:black;
 }
