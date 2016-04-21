@@ -46,7 +46,6 @@ div {
   transform: translate(-50%,-50%);
 }
 #button {
-  animation-name: fade;
   animation-delay:2s;
   position:relative;
   margin:0 auto;
