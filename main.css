@@ -60,8 +60,6 @@ div {
 }
 #button {
   position:relative;
-  height:281px;
-  width:450px;
   margin:0 auto;
 }
 
@@ -72,6 +70,7 @@ div {
   -moz-transition: opacity 0.2s ease-in-out;
   -o-transition: opacity 0.2s ease-in-out;
   transition: opacity 0.2s ease-in-out;
+  height:128px;
 }
 
 #button img.top:hover {
