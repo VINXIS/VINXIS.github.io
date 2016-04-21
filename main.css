@@ -57,7 +57,7 @@ div {
   -moz-transition: opacity 0.2s ease-in-out;
   -o-transition: opacity 0.2s ease-in-out;
   transition: opacity 0.2s ease-in-out;
-  height:64px;
+  height:84px;
 }
 #button img.top:hover {
   opacity:0;
