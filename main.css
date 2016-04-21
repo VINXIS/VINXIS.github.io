@@ -88,7 +88,10 @@ h1 {
   position: absolute;
   margin: 0 auto;
 }
+h2 {
+  font-family:text; 
+  text-align:center;
+}
 p {
   font-family:text; 
-  color:black;
 }
