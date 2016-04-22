@@ -98,8 +98,8 @@ p {
   animation-name: fade;
   animation-duration: 2s;
   animation-timing-function:ease-out;
-  bottom:0%;
-  left:5%;
+  top:95%;
+  left:7%;
   position:fixed;
   z-index:-100;
 }
