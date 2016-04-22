@@ -97,5 +97,6 @@ p {
 .bgsource {
   bottom:0%;
   left:5%;
-  position:absolute;
+  position:fixed;
+  z-index:-100;
 }
