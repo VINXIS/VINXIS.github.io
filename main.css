@@ -53,7 +53,7 @@ body {
   animation-name: fadedelay;
   animation-duration: 4s;
   animation-timing-function:ease-out;
-  position:fixed;
+  position:absolute;
   margin:0 auto;
 }
 #button img {
