@@ -25,13 +25,15 @@ body {
   animation-name: fade;
   animation-duration: 2s;
   animation-timing-function:ease-out;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    overflow: hidden;
-    z-index: -100;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  z-index: -100;
+  overflow: hidden;
 }
 .fullscreen-bg__video {
     position: absolute;
