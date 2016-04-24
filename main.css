@@ -21,6 +21,18 @@ body {
   width:100%; 
   margin: 0 auto;
 }
+nav {
+  color: #d8d8d8;
+  font-family: text;
+  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-name: fadedelay;
+  animation-duration: 4s;
+  animation-timing-function: ease-out;
+  font-size: 300%;
+}
 .fullscreen-bg {
   animation-name: fade;
   animation-duration: 2s;
@@ -104,4 +116,15 @@ p {
   left:7%;
   position:fixed;
   z-index:-100;
+}
+a[href^="/"] {
+  text-decoration: none;
+  color: #d8d8d8;
+  padding: 0% 5%;
+  transition: background-color 0.2s ease-in-out,color 0.2s ease-in-out;
+}
+
+a[href^="/"]:hover {
+  background-color:#ffffff;
+  color:black;
 }
