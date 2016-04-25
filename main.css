@@ -34,6 +34,8 @@ nav {
   font-size: 300%;
   white-space:nowrap;
   z-index:100;
+  width: 100%;
+  text-align: center;
 }
 .fullscreen-bg {
   animation-name: fade;
