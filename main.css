@@ -32,6 +32,7 @@ nav {
   animation-duration: 4s;
   animation-timing-function: ease-out;
   font-size: 300%;
+  white-space:nowrap;
 }
 .fullscreen-bg {
   animation-name: fade;
