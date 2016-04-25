@@ -122,8 +122,9 @@ p {
 a[href^="/"] {
   text-decoration: none;
   color: #d8d8d8;
-  padding: 0% 5%;
+  padding: 0% 4%;
   transition: background-color 0.2s ease-in-out,color 0.2s ease-in-out;
+  font-size:100%;
 }
 
 a[href^="/"]:hover {
