@@ -7,7 +7,6 @@ function vinglishify(value) {
     var NOISE_FACTOR = 0.05;
     var INSERTION_RATE = 0.2;
     var CHARS = 'qwertyuiop[\'asdfghjklzxcvbnm,';
-
     var arr = value.toLowerCase().split('');
     for(var i = 0; i < arr.length - 1; i++) {
         if(SWAP_FACTOR > Math.random()) {
@@ -24,22 +23,18 @@ function vinglishify(value) {
             }
         }
     }
-
     return arr.join('');
 }
-function translate() {
+function button() {
     document.getElementById("result").value = vinglishify(document.getElementById("entry").value);
 }
 </script>
 </head>
 <body>
-<form onsubmit="translate()">
 <div id="box1">Insert text here!
   <input id="entry">
 </div>
-<button type="submit">Vinglishify</button>
-<div id="box2">Text result
+<button type="button" onclick="button()">Vinglishify</button>
+  <div id="box2">Text result
   <input id="result">
-</div>
-</form>
  </body></html>
