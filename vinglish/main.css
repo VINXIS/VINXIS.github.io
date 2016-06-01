@@ -37,7 +37,7 @@ button {
     transform: translate(-50%,-50%);
     position: absolute;
     z-index: 100;
-    background-color: #d8d8d8;
+    background-color: #ffffff;
     border: none;
     color: black;
     padding: 15px 32px;
@@ -52,29 +52,25 @@ button:focus {
     outline: none;
 }
 button:active {
-    background-color: #ffffff;
+    background-color: #d8d8d8;
 }
 h1#entryheader {
     font-family: header;
     font-weight: lighter;
     display: initial;
 }
-
 div#box1 {
     position: absolute;
     top: 50%;
     left: 25%;
     transform: translate(-25%,-50%);
 }
-
 div#box2 {
     position: absolute;
-    top: 50%; */
+    top: 50%; 
     left: 75%;
     transform: translate(-75%,-50%);
-    left: 75%;
 }
-
 h1#resultheader {
     font-family: header;
     font-weight: lighter;
