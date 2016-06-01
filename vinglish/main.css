@@ -25,7 +25,6 @@ textarea:focus {
 textarea {
   width: 10%;
   height: 10%;
-  padding: 1px 1px;
   border-width: 1px;
   font-family: sans-serif;
   position: absolute;
@@ -35,6 +34,7 @@ button {
     left: 50%;
     transform: translate(-50%,-70%);
     position: absolute;
+    z-index: 100;
 }
 #entry {
   top: 50%;
@@ -45,4 +45,35 @@ button {
   top: 50%;
   left: 75%;
   transform: translate(-75%,-50%);
+}
+h1#entryheader {
+    font-family: header;
+    font-weight: lighter;
+    display: initial;
+    position: absolute;
+    top: 40%;
+    left: 25%;
+    transform: translate(-25%,-40%);
+}
+
+div#box1 {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+div#box2 {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+h1#resultheader {
+    font-family: header;
+    font-weight: lighter;
+    display: initial;
+    position: absolute;
+    top: 40%;
+    left: 75%;
+    transform: translate(-75%,-40%);
 }
