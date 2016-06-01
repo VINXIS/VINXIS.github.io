@@ -45,6 +45,7 @@ button {
     display: inline-block;
     font-size: 100%;
     font-family: header;
+    overlfow: hidden;
 }
 button:focus {
     outline: none;
