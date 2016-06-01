@@ -53,30 +53,14 @@ button:focus {
 button:active {
     background-color: #ffffff;
 }
-#entry {
-  /* top: 50%; */
-  /* left: 25%; */
-  /* transform: translate(-25%,-50%); */
-  }
-#result {
-  /* top: 50%; */
-  /* left: 75%; */
-  /* transform: translate(-75%,-50%); */
-}
 h1#entryheader {
     font-family: header;
     font-weight: lighter;
     display: initial;
-    /* position: absolute; */
-    /* top: 40%; */
-    /* left: 25%; */
-    /* transform: translate(-25%,-40%); */
 }
 
 div#box1 {
     position: absolute;
-    /* height: 100%; */
-    /* width: 100%; */
     top: 50%;
     left: 25%;
     transform: translate(-25%,-50%);
@@ -84,8 +68,6 @@ div#box1 {
 
 div#box2 {
     position: absolute;
-    /* height: 100%; */
-    /* width: 100%; */
     top: 50%; */
     left: 75%;
     transform: translate(-75%,-50%);
@@ -96,8 +78,7 @@ h1#resultheader {
     font-family: header;
     font-weight: lighter;
     display: initial;
-    /* position: absolute; */
-    /* top: 40%; */
-    /* left: 75%; */
-    /* transform: translate(-75%,-40%); */
+}
+h1 {
+  margin: 10px 0px;
 }
