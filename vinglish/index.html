@@ -27,13 +27,16 @@ function vinglishify(value) {
 
     return arr.join('');
 }
+function button() {
+    document.getElementById("result").innerHTML = vinglishify(document.getElementById("entry").value);
+}
 </script>
 </head>
 <body>
 <div id="box1">Insert text here!
-  <input>
+  <input id="entry">
 </div>
-<button type="button">Vinglishify</button>
-  <div="" id="box2">Text result
-  <input>
+<button type="button" onclick="button()">Vinglishify</button>
+  <div id="box2">Text result
+  <input id="result">
  </body></html>
