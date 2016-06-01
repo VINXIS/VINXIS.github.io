@@ -27,16 +27,19 @@ function vinglishify(value) {
 
     return arr.join('');
 }
-function button() {
+function execute() {
     document.getElementById("result").value = vinglishify(document.getElementById("entry").value);
 }
 </script>
 </head>
 <body>
+<form onsubmit="execute()">
 <div id="box1">Insert text here!
   <input id="entry">
 </div>
-<button type="button" onclick="button()">Vinglishify</button>
-  <div id="box2">Text result
+<button type="submit">Vinglishify</button>
+<div id="box2">Text result
   <input id="result">
+</div>
+</form>
  </body></html>
