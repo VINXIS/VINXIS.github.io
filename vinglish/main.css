@@ -31,9 +31,9 @@ textarea {
   z-index: 100;
 }
 button {
-    top: 70%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%,-70%);
+    transform: translate(-50%,-50%);
     position: absolute;
     z-index: 100;
     background-color: #ffffff;
@@ -44,6 +44,7 @@ button {
     text-decoration: none;
     display: inline-block;
     font-size: 100%;
+    font-family: header;
 }
 #entry {
   top: 50%;
