@@ -28,11 +28,11 @@ body {
   transform: translate(-75%,-50%);
   font-family: header;
 }
-input:focus {
+textarea:focus {
   outline: -webkit-focus-ring-color 0px;
   outline-offset: 0px;
 }
-input {
+textarea {
   width: 400%;
   height: 2000%;
   padding: 1px 1px;
