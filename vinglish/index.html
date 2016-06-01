@@ -27,13 +27,13 @@ function vinglishify(value) {
 
     return arr.join('');
 }
-function execute() {
+function translate() {
     document.getElementById("result").value = vinglishify(document.getElementById("entry").value);
 }
 </script>
 </head>
 <body>
-<form onsubmit="execute()">
+<form onsubmit="translate()">
 <div id="box1">Insert text here!
   <input id="entry">
 </div>
