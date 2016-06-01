@@ -46,6 +46,9 @@ button {
     font-size: 100%;
     font-family: header;
 }
+button:focus {
+    outline-color: #ff6200;
+}
 #entry {
   top: 50%;
   left: 25%;
