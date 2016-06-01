@@ -29,6 +29,7 @@ textarea {
   font-family: sans-serif;
   position: absolute;
   z-index: 100;
+  margin: 10px 0px;
 }
 button {
     top: 50%;
@@ -78,7 +79,4 @@ h1#resultheader {
     font-family: header;
     font-weight: lighter;
     display: initial;
-}
-h1 {
-  margin: 10px 0px;
 }
