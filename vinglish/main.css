@@ -28,7 +28,6 @@ textarea {
   border-width: 1px;
   font-family: sans-serif;
   position: absolute;
-  z-index: 100;
   margin: 10px 0px;
 }
 button {
@@ -36,7 +35,6 @@ button {
     left: 50%;
     transform: translate(-50%,-50%);
     position: absolute;
-    z-index: 100;
     background-color: #ffffff;
     border: none;
     color: black;
