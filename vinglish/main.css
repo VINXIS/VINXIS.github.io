@@ -11,30 +11,20 @@ body {
   height:100%;
   width:100%;
   margin:0px;
+  background-color: #d8d8d8;
 }
-#box1 {
-  background-color:#d8d8d8;
+#box {
   position: absolute;
-  top: 50%;
-  left: 25%;
-  transform: translate(-25%,-50%);
-  font-family: header;
-}
-#box2 {
-  background-color:#d8d8d8;
-  position: absolute;
-  top: 50%;
-  left: 75%;
-  transform: translate(-75%,-50%);
-  font-family: header;
+  height: 100%;
+  width: 100%;
 }
 textarea:focus {
   outline: -webkit-focus-ring-color 0px;
   outline-offset: 0px;
 }
 textarea {
-  width: 400%;
-  height: 2000%;
+  width: 10%;
+  height: 10%;
   padding: 1px 1px;
   border-width: 1px;
   font-family: sans-serif;
@@ -45,4 +35,14 @@ button {
     left: 50%;
     transform: translate(-50%,-70%);
     position: absolute;
+}
+#entry {
+  top: 50%;
+  left: 25%;
+  transform: translate(-25%,-50%);
+  }
+#result {
+  top: 50%;
+  left: 75%;
+  transform: translate(-75%,-50%);
 }
