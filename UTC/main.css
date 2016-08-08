@@ -7,7 +7,5 @@
     font-family: text;
     font-size: 500px;
     text-align: center;
-    background: -webkit-linear-gradient(#005782, #00445b);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #00445b;
 }
