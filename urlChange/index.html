@@ -4,8 +4,7 @@
     <script>
 function httpGet(theUrl) {
   var xmlHttp = new XMLHttpRequest();
-  xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-  xmlHttp.send( null );
+  xmlHttp.open( "GET", theUrl, false);
   return xmlHttp.responseXML;
 }
 // /html/head/title/text()
@@ -19,6 +18,7 @@ function urlChanger(value) {
     if (linkType[4] === 'beatmapsets') {
       var fixValue = value.replace('beatmapsets','s');
       var newValue1 = fixValue.trim();
+      console.log(newValue1);
 
       var check = newValue1.indexOf('#');
       if (check !== -1) {
@@ -27,19 +27,27 @@ function urlChanger(value) {
       else {
         newValue = newValue1;
       }
+      console.log(newValue);
     }
     else {
       newValue = value;
+      console.log(newValue);
     }
 
     var data = httpGet(newValue);
+    console.log(data);
     var trim = data.getElementsByTagName("title")[0].childNodes[0].nodeValue.trim();
+    console.log(trim);
     var title_and_artist = trim.slice(0,trim.length()-trim.indexOf('·'));
+    console.log(title_and_artist);
+
+    var result = '[url=' + newValue + ']'+ title_and_artist + '[/url]';
+    console.log(result);
 
     //var swapRegex = /(.+) - (.+)/i;
 
 
-    return '[url=' + newValue + ']'+ title_and_artist + '[/url]';
+    return result;
   }
   else {
     return 'Input is invalid! Must be an /s/ or /beatmapsets/ link (Preferably /s/)';
