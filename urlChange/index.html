@@ -17,7 +17,7 @@ function urlChanger(value) {
     var linkType = verify.exec(value);
     console.log(linkType);
     if (linkType[4] === 's') {
-      var fixValue = value.replace('s','beatmapsets');
+      var fixValue = value.replace(/osu.ppy.sh\/s\//,'osu.ppy.sh/beatmapsets/');
       var newValue = fixValue.trim();
       console.log(newValue);
 
