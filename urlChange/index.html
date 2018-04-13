@@ -15,22 +15,23 @@ function urlChanger(value) {
   if (verification === true) {
     var linkType = verify.exec(value);
     console.log(linkType);
-    if (linkType[4] === 'beatmapsets') {
-      var fixValue = value.replace('beatmapsets','s');
-      var newValue1 = fixValue.trim();
-      console.log(newValue1);
-
-      var check = newValue1.indexOf('#');
-      if (check !== -1) {
-        newValue = newValue1.slice(0,newValue.length()-check);
-      }
-      else {
-        newValue = newValue1;
-      }
+    if (linkType[4] === 's') {
+      var fixValue = value.replace('s','beatmapsets');
+      var newValue = fixValue.trim();
       console.log(newValue);
+
     }
     else {
-      newValue = value;
+      var check = value.indexOf('#');]
+      console.log(check);
+      if (check !== -1) {
+        fixValue = value.slice(0,newValue.length()-check);
+      }
+      else {
+        fixValue = value;
+      }
+
+      newValue = fixValue.trim();
       console.log(newValue);
     }
 
@@ -40,6 +41,7 @@ function urlChanger(value) {
     console.log(trim);
     var title_and_artist = trim.slice(0,trim.length()-trim.indexOf('·'));
     console.log(title_and_artist);
+
 
     var result = '[url=' + newValue + ']'+ title_and_artist + '[/url]';
     console.log(result);
