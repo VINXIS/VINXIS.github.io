@@ -13,7 +13,7 @@ function urlChanger(value) {
   var verify = /(http(s)?:\/\/)?(www)?osu.ppy.sh\/(s|beatmapsets)\/.+/gi;
   var verification = verify.test(value);
 
-  if (verificaion === true) {
+  if (verification === true) {
     var linkType = verify.exec(value)[4];
     if (linkType === 'beatmapsets') {
       var fixValue = verify.replace('beatmapsets','s');
