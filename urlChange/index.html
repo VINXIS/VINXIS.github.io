@@ -6,7 +6,7 @@ function httpGet(theUrl) {
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.open("GET", theUrl, true);
   xmlHttp.send(null);
-  return xmlHttp.responseXML;
+  return xmlHttp.responseText;
 }
 // /html/head/title/text()
 function urlChanger(value) {
@@ -38,7 +38,8 @@ function urlChanger(value) {
 
     httpGet(newValue).then(data => {
       console.log(data);
-      var trim = data.getElementsByTagName("title")[0].childNodes[0].nodeValue.trim();
+      parser = new DOMParser();
+      var trim = parser.parseFromString(data,"text/xml").getElementsByTagName("title")[0].childNodes[0].nodeValue.trim();
       console.log(trim);
       var title_and_artist = trim.slice(0,trim.length()-trim.indexOf('·'));
       console.log(title_and_artist);
