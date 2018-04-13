@@ -12,11 +12,12 @@ function httpGet(theUrl) {
 function urlChanger(value) {
   var verify = /(http(s)?:\/\/)?(www)?osu.ppy.sh\/(s|beatmapsets)\/.+/gi;
   var verification = verify.test(value);
-
+  console.log(verification);
   if (verification === true) {
-    var linkType = verify.exec(value)[4];
-    if (linkType === 'beatmapsets') {
-      var fixValue = verify.replace('beatmapsets','s');
+    var linkType = verify.exec(value);
+    console.log(linkType);
+    if (linkType[4] === 'beatmapsets') {
+      var fixValue = value.replace('beatmapsets','s');
       var newValue1 = fixValue.trim();
 
       var check = newValue1.indexOf('#');
@@ -48,16 +49,16 @@ function button() {
     document.getElementById("result").value = urlChanger(document.getElementById("entry").value);
 }
 </script>
-  <title>Vinglish</title>
-  <meta name="description" content="Make your text look like as if I typed it!.">
+  <title>osu!beatmap URL BB Code Generator</title>
+  <meta name="description" content="BB Code Generator for osu! map links.">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:domain" content="vinxis.moe/vinglish/">
+  <meta name="twitter:domain" content="vinxis.moe/urlChang/">
   <meta property="og:type" content="website">
   <meta property="og:image" itemprop="image primaryImageOfPage" content="8wPQd831.png">
   <meta name="twitter:title" property="og:title" itemprop="title name" content="VINXIS">
-  <meta name="twitter:description" property="og:description" itemprop="description" content="Make your text look like as if I typed it!" >
-  <meta property="og:url" content="http://vinxis.moe/vinglish/">
-  <meta property="og:url" content="http://www.vinxis.moe/vinglish/">
+  <meta name="twitter:description" property="og:description" itemprop="description" content="BB Code Generator for osu! map links." >
+  <meta property="og:url" content="http://vinxis.moe/urlChange/">
+  <meta property="og:url" content="http://www.vinxis.moe/urlChang/">
   <link rel="shortcut icon" href="favicon.ico?">
   <link rel="stylesheet" href="main.css">
   <meta name="robots" content="index, follow, noodp">
