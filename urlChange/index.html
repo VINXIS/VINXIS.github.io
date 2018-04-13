@@ -10,7 +10,7 @@ function httpGet(theUrl) {
 }
 // /html/head/title/text()
 function urlChanger(value) {
-  var verify = /(http(s)?:\/\/)?(www)?osu.ppy.sh\/(s|beatmapsets)\/.+/gi;
+  var verify = /(http(s)?:\/\/)?(www)?osu.ppy.sh\/(s|beatmapsets)\/.+/i;
   var verification = verify.test(value);
   console.log(verification);
   if (verification === true) {
@@ -36,7 +36,7 @@ function urlChanger(value) {
     var trim = data.getElementsByTagName("title")[0].childNodes[0].nodeValue.trim();
     var title_and_artist = trim.slice(0,trim.length()-trim.indexOf('·'));
 
-    //var swapRegex = /(.+) - (.+)/gi;
+    //var swapRegex = /(.+) - (.+)/i;
 
 
     return '[url=' + newValue + ']'+ title_and_artist + '[/url]';
