@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html><head>
+    <link rel="stylesheet" href="main.css">
+    <script>
+function httpGet(theUrl) {
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+  xmlHttp.send( null );
+  return xmlHttp.responseXML;
+}
+// /html/head/title/text()
+function urlChanger(value) {
+  var verify = /(http(s)?:\/\/)?(www)?osu.ppy.sh\/(s|beatmapsets)\/.+/gi;
+  var verification = verify.test(value);
+
+  if (verificaion === true) {
+    var linkType = verify.exec(value)[4];
+    if (linkType === 'beatmapsets') {
+      var fixValue = verify.replace('beatmapsets','s');
+      var newValue1 = fixValue.trim();
+
+      var check = newValue1.indexOf('#');
+      if (check !== -1) {
+        newValue = newValue1.slice(0,newValue.length()-check);
+      }
+      else {
+        newValue = newValue1;
+      }
+    }
+    else {
+      newValue = value;
+    }
+
+    var data = httpGet(newValue);
+    var trim = data.getElementsByTagName("title")[0].childNodes[0].nodeValue.trim();
+    var title_and_artist = trim.slice(0,trim.length()-trim.indexOf('·'));
+
+    //var swapRegex = /(.+) - (.+)/gi;
+
+
+    return '[url=' + newValue + ']'+ title_and_artist + '[/url]';
+  }
+  else {
+    return 'Input is invalid! Must be an /s/ or /beatmapsets/ link (Preferably /s/)';
+  }
+}
+function button() {
+    document.getElementById("result").value = urlChanger(document.getElementById("entry").value);
+}
+</script>
+  <title>Vinglish</title>
+  <meta name="description" content="Make your text look like as if I typed it!.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="vinxis.moe/vinglish/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" itemprop="image primaryImageOfPage" content="8wPQd831.png">
+  <meta name="twitter:title" property="og:title" itemprop="title name" content="VINXIS">
+  <meta name="twitter:description" property="og:description" itemprop="description" content="Make your text look like as if I typed it!" >
+  <meta property="og:url" content="http://vinxis.moe/vinglish/">
+  <meta property="og:url" content="http://www.vinxis.moe/vinglish/">
+  <link rel="shortcut icon" href="favicon.ico?">
+  <link rel="stylesheet" href="main.css">
+  <meta name="robots" content="index, follow, noodp">
+</head>
+<body>
+<div>
+<div id="box1">
+  <h1 id="entryheader">Original text</h1>
+  <textarea id="entry" placeholder="Insert text here!"></textarea>
+</div>
+<button type="button" onclick="button()">Get the BB Code Bro</button>
+  <div id="box2">
+  <h1 id="resultheader">Translated text</h1>
+  <textarea  id="result" placeholder="Text result!"></textarea>
+  </div>
+ </body></html>
