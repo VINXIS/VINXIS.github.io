@@ -2,13 +2,6 @@
 <html><head>
     <link rel="stylesheet" href="main.css">
     <script>
-function httpGet(theUrl) {
-  var xmlHttp = new XMLHttpRequest();
-  xmlHttp.open("GET", theUrl, true);
-  xmlHttp.setRequestHeader('Access-Control-Allow-Origin', 'http://vinxis.moe');
-  xmlHttp.send(null);
-  return xmlHttp.responseText;
-}
 // /html/head/title/text()
 function urlChanger(value) {
   var verify = /(http(s)?:\/\/)?(www)?osu.ppy.sh\/(s|beatmapsets)\/.+/i;
@@ -27,7 +20,7 @@ function urlChanger(value) {
       var check = value.indexOf('#');
       console.log(check);
       if (check !== -1) {
-        fixValue = value.slice(0,value.length-check);
+        fixValue = value.slice(0,check);
       }
       else {
         fixValue = value;
@@ -37,10 +30,15 @@ function urlChanger(value) {
       console.log(newValue);
     }
 
-    httpGet(newValue).then(data => {
-      console.log(data);
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.addEventListener("load", reqListener);
+    xmlHttp.open("GET", newValue);
+    xmlHttp.send();
+
+    function reqListener () => {
+      console.log(this.responseText);
       parser = new DOMParser();
-      var parse = parser.parseFromString(data,"text/xml");
+      var parse = parser.parseFromString(this.responseText,"text/xml");
       console.log(parse);
       var trim = parse.getElementsByTagName("title")[0].childNodes[0].nodeValue.trim();
       console.log(trim);
@@ -55,9 +53,7 @@ function urlChanger(value) {
 
 
       return result;
-    }).catch(err => {
-      console.log(err);
-    });
+    };
   }
   else {
     return 'Input is invalid! Must be an /s/ or /beatmapsets/ link (Preferably /s/)';
