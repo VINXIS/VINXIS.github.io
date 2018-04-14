@@ -35,7 +35,7 @@ function urlChanger(value) {
     xmlHttp.open("GET", newValue);
     xmlHttp.send();
 
-    function reqListener () => {
+    function reqListener() {
       console.log(this.responseText);
       parser = new DOMParser();
       var parse = parser.parseFromString(this.responseText,"text/xml");
