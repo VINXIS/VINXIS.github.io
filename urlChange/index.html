@@ -1,70 +1,63 @@
 <!DOCTYPE html>
-<html><head>
-    <link rel="stylesheet" href="main.css">
-    <script>
-// /html/head/title/text()
-function urlChanger(value, api) {
-  var verify = /(http(s)?:\/\/)?(www)?osu.ppy.sh\/(s|beatmapsets)\/.+/i;
-  var verification = verify.test(value);
-  console.log(verification);
-  if (verification === true) {
-    var linkType = verify.exec(value);
-    console.log(linkType);
-    if (linkType[4] === 's') {
-      var fixValue = value.replace(/osu.ppy.sh\/s\//i,'osu.ppy.sh/beatmapsets/');
-      var newValue = fixValue.trim();
-      console.log(newValue);
+<html>
+<head>
+  <script>
+    function urlChanger(value, api) {
+      var verify = /(http(s)?:\/\/)?(www)?osu.ppy.sh\/(s|beatmapsets)\/.+/i;
+      var verification = verify.test(value);
+      console.log(verification);
+      if (verification === true) {
+        var linkType = verify.exec(value);
+        console.log(linkType);
+        if (linkType[4] === 's') {
+          var fixValue = value.replace(/osu.ppy.sh\/s\//i,'osu.ppy.sh/beatmapsets/');
+          var newValue = fixValue.trim();
+          console.log(newValue);
 
-    }
-    else {
-      var check = value.indexOf('#');
-      console.log(check);
-      if (check !== -1) {
-        fixValue = value.slice(0,check);
+        }
+        else {
+          var check = value.indexOf('#');
+          console.log(check);
+          if (check !== -1) {
+            fixValue = value.slice(0,check);
+          }
+          else {
+            fixValue = value;
+          }
+
+          newValue = fixValue.trim();
+          console.log(newValue);
+        }
+
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.addEventListener("load", reqListener);
+        xmlHttp.open("GET", "https://osu.ppy.sh/api/get_beatmaps?k=" + api + "&s=724899");
+        xmlHttp.send();
+
+        function reqListener() {
+          console.log(this.responseText);
+          parser = new DOMParser();
+          var parse = JSON.parse(this.responseText);
+          console.log(parse);
+          var title = parse[0].title;
+          console.log(title);
+          var artist = parse[0].artist;
+          console.log(artist);
+
+          var result = '[url=' + newValue + ']' + artist + ' - ' + title '[/url]';
+          console.log(result);
+
+          return result;
+        };
       }
       else {
-        fixValue = value;
+        return 'Input is invalid! Must be an /s/ or /beatmapsets/ link (Preferably /s/)';
       }
-
-      newValue = fixValue.trim();
-      console.log(newValue);
     }
-
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.addEventListener("load", reqListener);
-    xmlHttp.open("GET", "https://osu.ppy.sh/api/get_beatmaps?k=" + api + "&s=724899");
-    xmlHttp.send();
-
-    function reqListener() {
-      console.log(this.responseText);
-      parser = new DOMParser();
-      var parse = JSON.parse(this.responseText);
-      console.log(parse);
-      var title = parse[0].title;
-      console.log(title);
-      var artist = parse[0].artist;
-      console.log(artist);
-/*      var title_and_artist = trim.slice(0,trim.length()-trim.indexOf('·'));
-      console.log(title_and_artist);*/
-
-
-      var result = '[url=' + newValue + ']' + artist + ' - ' + title '[/url]';
-      console.log(result);
-
-      //var swapRegex = /(.+) - (.+)/i;
-
-
-      return result;
-    };
-  }
-  else {
-    return 'Input is invalid! Must be an /s/ or /beatmapsets/ link (Preferably /s/)';
-  }
-}
-function button() {
-    document.getElementById("result").value = urlChanger(document.getElementById("entry").value, document.getElementById("api").value);
-}
-</script>
+    function button() {
+      document.getElementById("result").value = urlChanger(document.getElementById("entry").value, document.getElementById("api").value);
+    }
+  </script>
   <title>osu!beatmap URL BB Code Generator</title>
   <meta name="description" content="BB Code Generator for osu! map links.">
   <meta name="twitter:card" content="summary">
@@ -95,4 +88,5 @@ function button() {
     <h1 id="resultheader">BB Code</h1>
     <textarea  id="result" placeholder="Text result!"></textarea>
   </div>
-</body></html>
+</body>
+</html>
