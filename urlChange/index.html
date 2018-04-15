@@ -43,7 +43,7 @@
           var artist = parse[0].artist;
           console.log(artist);
 
-          var result = '[url=' + newValue + ']' + artist + ' - ' + title '[/url]';
+          var result = '[url=' + newValue + ']' + artist + ' - ' + title + '[/url]';
           console.log(result);
 
           return result;
@@ -56,7 +56,6 @@
     function button() {
       document.getElementById("result").value = urlChanger(document.getElementById("entry").value, document.getElementById("api").value);
     }
-    $("#button-click").click(button);
   </script>
   <title>osu!beatmap URL BB Code Generator</title>
   <meta name="description" content="BB Code Generator for osu! map links.">
@@ -83,7 +82,7 @@
       <textarea id="entry" placeholder="Insert map link here (must be an /s/ or /beatmapsets/ link)!"></textarea>
     </div>
   </div>
-  <button type="button" id="#button-click">Get the BB Code Bro</button>
+  <button type="button" onclick="button()">Get the BB Code Bro</button>
   <div id="box">
     <h1 id="resultheader">BB Code</h1>
     <textarea  id="result" placeholder="Text result!"></textarea>
