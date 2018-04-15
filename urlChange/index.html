@@ -34,8 +34,6 @@
         xmlHttp.open("GET", "https://osu.ppy.sh/api/get_beatmaps?k=" + api + "&s=724899");
         xmlHttp.send();
 
-        resultFetch = [];
-
         function reqListener() {
           console.log(this.responseText);
           var parse = JSON.parse(this.responseText);
@@ -45,12 +43,11 @@
           var artist = parse[0].artist;
           console.log(artist);
 
-          resultFetch.push('[url=' + newValue + ']' + artist + ' - ' + title + '[/url]');
-        };
+          var result = '[url=' + newValue + ']' + artist + ' - ' + title + '[/url]';
+          console.log(result);
 
-        console.log(resultFetch[0]);
-        
-        return resultFetch[0];
+          return result;
+        };
       }
       else {
         return 'Input is invalid! Must be an /s/ or /beatmapsets/ link (Preferably /s/)';
@@ -75,6 +72,8 @@
   <meta name="robots" content="index, follow, noodp">
 </head>
 <body>
+  <h class="header">This website only creates BB Code and created for MCA nomination/voting. See the full source code here: </h>
+  <a href="https://github.com/VINXIS/VINXIS.github.io/tree/master/urlChange" class="header">Src Code</a>
   <div class="left">
     <div id="box">
       <h1 id="apiheader">API</h1>
