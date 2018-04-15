@@ -32,21 +32,23 @@ function urlChanger(value) {
 
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.addEventListener("load", reqListener);
-    xmlHttp.open("GET", newValue);
+    xmlHttp.open("GET", "https://osu.ppy.sh/api/get_beatmaps?k=3ee627dc7cefe1bf9bff006135cf93b8100c4176&s=724899");
+    xmlHttp.withCredentials = true;
+    
     xmlHttp.send();
 
     function reqListener() {
       console.log(this.responseText);
       parser = new DOMParser();
-      var parse = parser.parseFromString(this.responseText,"text/xml");
+      var parse = JSON.parse(this.responseText);
       console.log(parse);
-      var trim = parse.getElementsByTagName("title")[0].childNodes[0].nodeValue.trim();
+      var trim = parse[0].title;
       console.log(trim);
-      var title_and_artist = trim.slice(0,trim.length()-trim.indexOf('·'));
-      console.log(title_and_artist);
+/*      var title_and_artist = trim.slice(0,trim.length()-trim.indexOf('·'));
+      console.log(title_and_artist);*/
 
 
-      var result = '[url=' + newValue + ']'+ title_and_artist + '[/url]';
+      var result = '[url=' + newValue + ']'+ trim + '[/url]';
       console.log(result);
 
       //var swapRegex = /(.+) - (.+)/i;
