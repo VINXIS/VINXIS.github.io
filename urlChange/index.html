@@ -2,12 +2,6 @@
 <html>
 <head>
   <script>
-    function req(URL) {
-      var httpRequest = new XMLHttpRequest();
-      httpRequest.open('GET', URL);
-      httpRequest.send();
-      return httpRequest.responseText;
-    }
     function urlChanger(value, api) {
       var verify = /(http(s)?:\/\/)?(www)?osu.ppy.sh\/(s|beatmapsets)\/.+/i;
       var verification = verify.test(value);
@@ -35,19 +29,25 @@
           console.log(newValue);
         }
 
-        raw = req("https://osu.ppy.sh/api/get_beatmaps?k=" + api + "&s=724899");
-        console.log(raw);
-        var parse = JSON.parse(raw);
-        console.log(parse);
-        var title = parse[0].title;
-        console.log(title);
-        var artist = parse[0].artist;
-        console.log(artist);
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.addEventListener("load", reqListener);
+        xmlHttp.open("GET", "https://osu.ppy.sh/api/get_beatmaps?k=" + api + "&s=724899");
+        xmlHttp.send();
 
-        var result = '[url=' + newValue + ']' + artist + ' - ' + title + '[/url]';
-        console.log(result);
+        function reqListener() {
+          console.log(this.responseText);
+          var parse = JSON.parse(this.responseText);
+          console.log(parse);
+          var title = parse[0].title;
+          console.log(title);
+          var artist = parse[0].artist;
+          console.log(artist);
 
-        return result;
+          var result = '[url=' + newValue + ']' + artist + ' - ' + title + '[/url]';
+          console.log(result);
+
+          return result;
+        };
       }
       else {
         return 'Input is invalid! Must be an /s/ or /beatmapsets/ link (Preferably /s/)';
