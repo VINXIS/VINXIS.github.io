@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="main.css">
     <script>
 // /html/head/title/text()
-function urlChanger(value) {
+function urlChanger(value, api) {
   var verify = /(http(s)?:\/\/)?(www)?osu.ppy.sh\/(s|beatmapsets)\/.+/i;
   var verification = verify.test(value);
   console.log(verification);
@@ -32,7 +32,7 @@ function urlChanger(value) {
 
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.addEventListener("load", reqListener);
-    xmlHttp.open("GET", "https://osu.ppy.sh/api/get_beatmaps?k=3ee627dc7cefe1bf9bff006135cf93b8100c4176&s=724899");
+    xmlHttp.open("GET", "https://osu.ppy.sh/api/get_beatmaps?k=" + api + "&s=724899");
     xmlHttp.send();
 
     function reqListener() {
@@ -40,13 +40,15 @@ function urlChanger(value) {
       parser = new DOMParser();
       var parse = JSON.parse(this.responseText);
       console.log(parse);
-      var trim = parse[0].title;
-      console.log(trim);
+      var title = parse[0].title;
+      console.log(title);
+      var artist = parse[0].artist;
+      console.log(artist);
 /*      var title_and_artist = trim.slice(0,trim.length()-trim.indexOf('·'));
       console.log(title_and_artist);*/
 
 
-      var result = '[url=' + newValue + ']'+ trim + '[/url]';
+      var result = '[url=' + newValue + ']' + artist + ' - ' + title '[/url]';
       console.log(result);
 
       //var swapRegex = /(.+) - (.+)/i;
@@ -60,7 +62,7 @@ function urlChanger(value) {
   }
 }
 function button() {
-    document.getElementById("result").value = urlChanger(document.getElementById("entry").value);
+    document.getElementById("result").value = urlChanger(document.getElementById("entry").value, document.getElementById("api").value);
 }
 </script>
   <title>osu!beatmap URL BB Code Generator</title>
@@ -74,18 +76,21 @@ function button() {
   <meta property="og:url" content="http://vinxis.moe/urlChange/">
   <meta property="og:url" content="http://www.vinxis.moe/urlChang/">
   <link rel="shortcut icon" href="favicon.ico?">
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="urlChange.css">
   <meta name="robots" content="index, follow, noodp">
 </head>
 <body>
-<div>
-<div id="box1">
-  <h1 id="entryheader">Original text</h1>
-  <textarea id="entry" placeholder="Insert text here!"></textarea>
+<div id="box">
+  <h1 id="apiheader">Map Link</h1>
+  <textarea id="api" placeholder="Insert osu!api here!"></textarea>
+</div>
+<div id="box">
+  <h1 id="entryheader">Map Link</h1>
+  <textarea id="entry" placeholder="Insert map link here (must be an /s/ or /beatmapsets/ link)!"></textarea>
 </div>
 <button type="button" onclick="button()">Get the BB Code Bro</button>
-  <div id="box2">
-  <h1 id="resultheader">Translated text</h1>
+<div id="box">
+  <h1 id="resultheader">BB Code</h1>
   <textarea  id="result" placeholder="Text result!"></textarea>
-  </div>
- </body></html>
+</div>
+</body></html>

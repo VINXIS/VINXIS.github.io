@@ -8,15 +8,23 @@ html {
   background:black;
 }
 body {
-  height:100%;
-  width:100%;
-  margin:0px;
-  background-color: #d8d8d8;
-}
-#box {
-  position: absolute;
   height: 100%;
   width: 100%;
+  margin: 0px;
+  background-color: #d8d8d8;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+#box {
+  position: relative;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 200px;
 }
 textarea:focus {
   outline: -webkit-focus-ring-color 0px;
@@ -31,9 +39,6 @@ textarea {
   margin: 10px 0px;
 }
 button {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
     position: absolute;
     background-color: #ffffff;
     border: none;
@@ -45,6 +50,7 @@ button {
     font-size: 100%;
     font-family: header;
     overflow: hidden;
+    margin: 0px 200px;
 }
 button:focus {
     outline: none;
@@ -57,19 +63,12 @@ h1#entryheader {
     font-weight: lighter;
     display: initial;
 }
-div#box1 {
-    position: absolute;
-    top: 50%;
-    left: 25%;
-    transform: translate(-25%,-50%);
-}
-div#box2 {
-    position: absolute;
-    top: 50%; 
-    left: 75%;
-    transform: translate(-75%,-50%);
-}
 h1#resultheader {
+    font-family: header;
+    font-weight: lighter;
+    display: initial;
+}
+h1#apiheader {
     font-family: header;
     font-weight: lighter;
     display: initial;
