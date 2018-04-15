@@ -24,7 +24,7 @@ body {
 }
 #box {
   position: relative;
-  flex: 1;
+  flex: 3;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -39,6 +39,7 @@ textarea {
   font-family: sans-serif;
   position: relative;
   flex: 1;
+  padding: 2px 10px 50px;
 }
 button {
   position: relative;
