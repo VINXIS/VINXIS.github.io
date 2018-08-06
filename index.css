@@ -1,0 +1,75 @@
+@font-face {
+  font-family: text; 
+  src: url(AvenirLTStd-Light.woff);
+}
+
+@keyframes centreFade {
+  from {opacity: 0;}
+  to {opacity: 100;}
+}
+
+@keyframes unsaturate {
+  from {background-color: #85BAA1;
+        color: #474A48}
+  to {background-color: #fff;
+      color: #000}
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  background-color: #85BAA1;
+  color: #474A48;
+  display: grid;
+  grid-template-rows: auto;
+  font-family: 'text', sans-serif;
+  height: 100vh;
+  width: 100vw;
+  animation-name: unsaturate;
+	animation-duration: 10s;
+	animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.toggle {
+  position: absolute;
+  cursor: pointer;
+  left: 1%;
+  top: 1%;
+  font-size: 2.5em;
+  transition: 1s;
+  transition-timing-function: ease-out;
+}
+
+.links {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: -5%;
+  top: 1%;
+  opacity: 0;
+  transition: 1s;
+  transition-timing-function: ease-out;
+}
+
+.links a {
+  text-decoration: none;
+  line-height: 2;
+  color: inherit;
+}
+
+.centre {
+  text-align: center;
+  align-self: center;
+  animation-name: centreFade;
+  animation-duration: 2s;
+  line-height: 1.5;
+}
+
+.logo {
+  position: relative;
+  height: 10%;
+  width: 10%;
+}
