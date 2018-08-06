@@ -38,7 +38,7 @@ body {
   cursor: pointer;
   left: 1%;
   top: 1%;
-  font-size: 2.5em;
+  font-size: 4em;
   transition: 1s;
   transition-timing-function: ease-out;
 }
