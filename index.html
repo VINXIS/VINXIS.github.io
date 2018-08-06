@@ -12,21 +12,34 @@
   <meta property="og:url" content="http://vinxis.moe/">
   <meta property="og:url" content="http://www.vinxis.moe/">
   <link rel="shortcut icon" href="vinxisOrange.png">
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="./index.css">
   <meta name="robots" content="index, follow, noodp">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-  <span class="toggle">&#9776;</span>
-  <div class="links">
-    <a href="https://vinxis.bandcamp.com">Bandcamp</a>
-    <a href="https://soundcloud.com/vinxis">Soundcloud</a>
-    <a href="https://www.youtube.com/user/OYKXF">Youtube</a>
-    <a href="https://open.spotify.com/artist/2cNVX1qSKExpOojOx3INu8">Spotify</a>
-    <a href="https://itunes.apple.com/us/artist/vinxis/1342478754">Apple Music</a>
-    <a href="https://twitter.com/vinxis1">Twitter</a>
-    <a href="https://osu.ppy.sh/u/4323406">osu!</a>
+  <div class="top">
+    <ul class="nav">
+      <li><a href="http://vinxis.moe">Home</a></li>
+      <li><a href="/About">About</a></li>
+      <li><a href="/Vinglish">Vinglish</a></li>
+      <li class="cors">Corsace</li>
+      <ul class="corsace">
+        <li class="gray">Website</li>
+        <li><a href="https://discord.gg/Z6vEMsr">Discord</a></li>
+      </ul>
+      <li class="ext">Ext. Links</li>
+      <ul class="links">
+        <li><a href="https://vinxis.bandcamp.com">Bandcamp</a></li>
+        <li><a href="https://soundcloud.com/vinxis">Soundcloud</a></li>
+        <li><a href="https://www.youtube.com/user/OYKXF">Youtube</a></li>
+        <li><a href="https://open.spotify.com/artist/2cNVX1qSKExpOojOx3INu8">Spotify</a></li>
+        <li><a href="https://itunes.apple.com/us/artist/vinxis/1342478754">Apple Music</a></li>
+        <li><a href="https://twitter.com/vinxis1">Twitter</a></li>
+        <li><a href="https://osu.ppy.sh/u/4323406">osu!</a></li>
+      </ul>
+    </ul>
+    <span class="toggle">&#9776;</span>
   </div>
   <div class="centre">
     <img class="logo" src="./vinxisBlack.png">
@@ -42,18 +55,38 @@
     <h1>Forever</h1-->
   </div>
   <script>
-    $(".toggle").click(function() {
-      var navigation = $(".links").css("opacity");
-      if (navigation === "0") {
-        $(".links").css("opacity", "100");
-        $(".links").css("left", "1%");
-        $(".toggle").css("left", "6%");
-      } else {
-        $(".links").css("opacity", "0");
-        $(".links").css("left", "-5%");
-        $(".toggle").css("left", "1%");
-      }
-    });
+  $(".toggle").click(function() {
+    var navigation = $(".nav").css("opacity");
+    if (navigation === "0") {
+      $(".nav").css("opacity", "100");
+      $(".top").css("left", "0");
+    } else {
+      $(".nav").css("opacity", "0");
+      $(".top").css("left", "-95px");
+      $("ul ul").css("height","0");
+      $("ul ul").css("width","0");
+    }
+  });
+  $(".ext").click(function() {
+    var size = $(".links").css("height");
+    if (size === "0px") {
+      $(".links").css("height", "224px");
+      $(".links").css("width", "89px");
+    } else {
+      $(".links").css("height", "0px");
+      $(".links").css("width", "0px");
+    }
+  });
+  $(".cors").click(function() {
+    var size = $(".corsace").css("height");
+    if (size === "0px") {
+      $(".corsace").css("height", "64px");
+      $(".corsace").css("width", "59px");
+    } else {
+      $(".corsace").css("height", "0px");
+      $(".corsace").css("width", "0px");
+    }
+  });
   </script>
 </body>
 </html>

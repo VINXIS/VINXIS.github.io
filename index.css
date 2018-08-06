@@ -8,81 +8,96 @@
   to {opacity: 100;}
 }
 
-@keyframes unsaturate {
-  from {background-color: #85BAA1;
-        color: #474A48}
-  to {background-color: #fff;
-      color: #000}
-}
-
 * {
   margin: 0;
+  list-style: none;
+  white-space: nowrap;
 }
 
 body {
   background-color: #85BAA1;
-  color: #474A48;
+  color: #374B4A;
   display: grid;
-  grid-template-rows: auto;
+  grid-template-rows: repeat(3,1fr);
   font-family: 'text', sans-serif;
   height: 100vh;
   width: 100vw;
-  animation-name: unsaturate;
-	animation-duration: 10s;
-	animation-iteration-count: infinite;
-  animation-direction: alternate;
+}
+
+.top {
+  grid-row-start: 1;
+  grid-column-start: 1;
+  display: flex;
+  position: relative;
+  left: -95px;
+  transition: 0.2s;
+  transition-timing-function: ease-out;
 }
 
 .toggle {
-  position: absolute;
   cursor: pointer;
-  left: 1%;
-  top: 1%;
   font-size: 4em;
-  transition: 1s;
+  padding-left: 10px;
+}
+
+.nav {
+  width: 70px;
+  line-height: 2;
+  opacity: 0;
+  padding-left: 25px;
+  padding-top: 12px;
+  cursor: pointer;
+}
+
+.corsace {
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  transition: 0.2s;
   transition-timing-function: ease-out;
 }
 
 .links {
   position: absolute;
-  display: flex;
-  flex-direction: column;
-  left: -5%;
-  top: 1%;
-  opacity: 0;
-  transition: 1s;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  transition: 0.2s;
   transition-timing-function: ease-out;
 }
 
-.links a {
+li {
   position: relative;
+}
+
+a {
   text-decoration: none;
-  line-height: 2;
   color: inherit;
 }
 
-.links a:after {
+li:after {
   content: "";
   position: absolute;
   width: 100%;
   height: 1px;
-  bottom: 1px;
+  bottom: 0;
   left: 0;
-  background-color: #000;
+  background-color: #374B4A;
   visibility: hidden;
   -webkit-transform: scaleX(0);
   transform: scaleX(0);
-  -webkit-transition: all 0.3s ease-in-out 0s;
-  transition: all 0.3s ease-in-out 0s;
+  -webkit-transition: all 0.15s ease-in-out 0s;
+  transition: all 0.15s ease-in-out 0s;
 }
 
-.links a:hover:after {
+li:hover:after {
   visibility: visible;
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
 } 
 
 .centre {
+  grid-row-start: 2;
   text-align: center;
   align-self: center;
   animation-name: centreFade;
