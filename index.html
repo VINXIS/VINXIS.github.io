@@ -22,21 +22,23 @@
     <ul class="nav">
       <li><a href="/">Home</a></li>
       <li><a href="/Vinglish">Vinglish</a></li>
-      <li class="cors">Corsace</li>
-      <ul class="corsace">
-        <li class="gray">Website</li>
-        <li><a href="https://discord.gg/Z6vEMsr">Discord</a></li>
-      </ul>
-      <li class="ext">Ext. Links</li>
-      <ul class="links">
-        <li><a href="https://vinxis.bandcamp.com">Bandcamp</a></li>
-        <li><a href="https://soundcloud.com/vinxis">Soundcloud</a></li>
-        <li><a href="https://www.youtube.com/user/OYKXF">Youtube</a></li>
-        <li><a href="https://open.spotify.com/artist/2cNVX1qSKExpOojOx3INu8">Spotify</a></li>
-        <li><a href="https://itunes.apple.com/us/artist/vinxis/1342478754">Apple Music</a></li>
-        <li><a href="https://twitter.com/vinxis1">Twitter</a></li>
-        <li><a href="https://osu.ppy.sh/u/4323406">osu!</a></li>
-      </ul>
+      <li class="cors">Corsace
+        <ul class="corsace">
+            <li class="gray">Website</li>
+            <li><a href="https://discord.gg/Z6vEMsr">Discord</a></li>
+          </ul>
+      </li>
+      <li class="ext">Ext. Links
+        <ul class="links">
+            <li><a href="https://vinxis.bandcamp.com">Bandcamp</a></li>
+            <li><a href="https://soundcloud.com/vinxis">Soundcloud</a></li>
+            <li><a href="https://www.youtube.com/user/OYKXF">Youtube</a></li>
+            <li><a href="https://open.spotify.com/artist/2cNVX1qSKExpOojOx3INu8">Spotify</a></li>
+            <li><a href="https://itunes.apple.com/us/artist/vinxis/1342478754">Apple Music</a></li>
+            <li><a href="https://twitter.com/vinxis1">Twitter</a></li>
+            <li><a href="https://osu.ppy.sh/u/4323406">osu!</a></li>
+          </ul>
+      </li>
     </ul>
     <span class="toggle">&#9776;</span>
   </div>
@@ -54,38 +56,120 @@
     <h1>Forever</h1-->
   </div>
   <script>
-  $(".toggle").click(function() {
-    var navigation = $(".nav").css("opacity");
-    if (navigation === "0") {
-      $(".nav").css("opacity", "100");
-      $(".top").css("left", "0");
-    } else {
-      $(".nav").css("opacity", "0");
-      $(".top").css("left", "-95px");
-      $("ul ul").css("height","0");
-      $("ul ul").css("width","0");
+  var eventFired = 0;
+
+  if ($(window).width() < 1200) {
+    $(".ext").click(function() {
+      var size = $(".links").css("height");
+      if (size === "0px") {
+        $(".links").css("height", "256px");
+      } else {
+        $(".links").css("height", "0");
+      }
+    });
+    $(".cors").click(function() {
+      var size = $(".corsace").css("height");
+      if (size === "0px") {
+        $(".corsace").css("height", "64px");
+      } else {
+        $(".corsace").css("height", "0");
+      }
+    });
+  } else {
+    $(".toggle").click(function() {
+      var navigation = $(".nav").css("opacity");
+      if (navigation === "0") {
+        $(".nav").css("opacity", "100");
+        $(".top").css("left", "0");
+      } else {
+        $(".nav").css("opacity", "0");
+        $(".top").css("left", "-95px");
+        $("ul ul").css("height","0");
+        $("ul ul").css("width","0");
+      }
+    });
+    $(".ext").click(function() {
+      var size = $(".links").css("height");
+      if (size === "0px") {
+        $(".links").css("height", "224px");
+        $(".links").css("width", "89px");
+      } else {
+        $(".links").css("height", "0px");
+        $(".links").css("width", "0px");
+      }
+    });
+    $(".cors").click(function() {
+      var size = $(".corsace").css("height");
+      if (size === "0px") {
+        $(".corsace").css("height", "64px");
+        $(".corsace").css("width", "59px");
+      } else {
+        $(".corsace").css("height", "0px");
+        $(".corsace").css("width", "0px");
+      }
+    });
+
+    eventFired = 1;
+  }
+
+  $(window).on('resize', function() {
+    if (!eventFired) {
+      if ($(window).width() < 1200) {
+        $(".nav").css("opacity", "100");
+        $(".top").css("left", "0");
+        $(".ext").click(function() {
+          var size = $(".links").css("height");
+          if (size === "0px") {
+            $(".links").css("height", "256px");
+          } else {
+            $(".links").css("height", "0");
+          }
+        });
+        $(".cors").click(function() {
+          var size = $(".corsace").css("height");
+          if (size === "0px") {
+            $(".corsace").css("height", "64px");
+          } else {
+            $(".corsace").css("height", "0");
+          }
+        });
+      } else {
+        $(".toggle").click(function() {
+          var navigation = $(".nav").css("opacity");
+          if (navigation === "0") {
+            $(".nav").css("opacity", "100");
+            $(".top").css("left", "0");
+          } else {
+            $(".nav").css("opacity", "0");
+            $(".top").css("left", "-95px");
+            $("ul ul").css("height","0");
+            $("ul ul").css("width","0");
+          }
+        });
+        $(".ext").click(function() {
+          var size = $(".links").css("height");
+          if (size === "0px") {
+            $(".links").css("height", "224px");
+            $(".links").css("width", "89px");
+          } else {
+            $(".links").css("height", "0px");
+            $(".links").css("width", "0px");
+          }
+        });
+        $(".cors").click(function() {
+          var size = $(".corsace").css("height");
+          if (size === "0px") {
+            $(".corsace").css("height", "64px");
+            $(".corsace").css("width", "59px");
+          } else {
+            $(".corsace").css("height", "0px");
+            $(".corsace").css("width", "0px");
+          }
+        });
+      }
     }
   });
-  $(".ext").click(function() {
-    var size = $(".links").css("height");
-    if (size === "0px") {
-      $(".links").css("height", "224px");
-      $(".links").css("width", "89px");
-    } else {
-      $(".links").css("height", "0px");
-      $(".links").css("width", "0px");
-    }
-  });
-  $(".cors").click(function() {
-    var size = $(".corsace").css("height");
-    if (size === "0px") {
-      $(".corsace").css("height", "64px");
-      $(".corsace").css("width", "59px");
-    } else {
-      $(".corsace").css("height", "0px");
-      $(".corsace").css("width", "0px");
-    }
-  });
+
   </script>
 </body>
 </html>
