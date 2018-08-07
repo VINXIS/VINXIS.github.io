@@ -25,7 +25,7 @@ textarea, textarea:focus, textarea:active, .outputText {
 button, button:focus {
     border: solid;
     border-radius: 10px;
-    color: #526760;
+    color: #374B4A;
     outline: 0;
     background-color: #85BAA1;
     font: inherit;
@@ -75,4 +75,49 @@ input[type="range" i]::-moz-range-thumb {
     height: 25px; 
     background: #526760; 
     cursor: pointer;
+}
+
+@media only screen and (max-width: 1200px) { 
+    .vinglishCentre {
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+    }
+
+    .sliders {
+        order: 1;
+    }
+
+    .input {
+        order: 2;
+    }
+
+    .inputText {
+        order: 3;
+    }
+
+    .vinglishButton {
+        order: 4;
+        margin: 30px;
+    }
+
+    .output {
+        order: 5;
+    }
+
+    .outputText {
+        order: 6;
+    }
+
+    .inputText, .outputText {
+        align-self: start;
+    }
+    
+    .vinglishHeader {
+        align-self: center;
+    }
+
+    .sliders {
+        justify-items: start;
+    }
 }
