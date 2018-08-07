@@ -86,6 +86,7 @@ input[type="range" i]::-moz-range-thumb {
 
     .sliders {
         order: 1;
+        margin-bottom: 20px;
     }
 
     .input {

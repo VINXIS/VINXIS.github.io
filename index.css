@@ -37,7 +37,7 @@ body {
 .toggle {
   cursor: pointer;
   font-size: 4em;
-  padding-left: 10px;
+  padding-left: 24px;
 }
 
 .nav {
