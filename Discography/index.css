@@ -45,6 +45,11 @@ h1 {
     font-size: 20px;
 }
 
+.mid {
+    display: flex;
+    justify-content: space-between;
+}
+
 @media only screen and (min-width: 2150px) {
     .discogList {
         grid-template-areas: "a a a a a";
