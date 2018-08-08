@@ -1,0 +1,70 @@
+li::before {
+    background-color: #374B4A;
+}
+
+.centre {
+    animation-name: centreFade;
+    animation-timing-function: ease-out;
+    animation-duration: 2s;
+    display: grid;
+}
+
+h1 {
+    padding: 5px;
+}
+
+.discogList {
+    display: grid;
+    grid-template-areas: "a a a a";
+    grid-auto-columns: 405px;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    justify-content: center;
+    background-image: url(background.png);
+    background-size: cover;
+    background-origin: padding-box;
+    color: #CCDBDC;
+
+}
+
+.song {
+    background-color: #85BAA155;
+    outline: solid;
+    outline-color: #85BAA1;
+    outline-width: 10px;
+}
+
+
+.songTop {
+    padding: 5px 20px;
+    text-align: left;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+@media only screen and (min-width: 2150px) {
+    .discogList {
+        grid-template-areas: "a a a a a";
+    }
+}
+
+@media only screen and (max-width: 1750px) {
+    .discogList {
+        grid-template-areas: "a a a";
+    }
+}
+
+@media only screen and (max-width: 1280px) {
+    .discogList {
+        grid-template-areas: "a a";
+    }
+}
+
+@media only screen and (max-width: 880px) {
+    .discogList {
+        grid-template-areas: "a";
+    }
+}
