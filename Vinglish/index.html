@@ -185,8 +185,12 @@
 
   $(document).keypress(function(e) {
     if(e.which == 13) {
-        vinglishify();
+      vinglishify();
     }
+  });
+
+  $(".inputText").keypress(function(e) {
+    vinglishify();
   });
 
   function vinglishify() {
