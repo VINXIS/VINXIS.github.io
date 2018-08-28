@@ -20,9 +20,6 @@ h1 {
     grid-column-gap: 20px;
     grid-row-gap: 20px;
     justify-content: center;
-    background-image: url(background.png);
-    background-size: cover;
-    background-origin: padding-box;
     color: #CCDBDC;
 
 }
