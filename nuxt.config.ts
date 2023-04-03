@@ -2,13 +2,9 @@
 export default defineNuxtConfig({
     target: "static",
     app: {
-        baseURL: "/VINXIS.github.io/",
         head: {
             meta: [
                 { name: "robots", content: "all" },
-            ],
-            link: [
-                { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Avenir&display=swap" },
             ],
         },
         pageTransition: { 

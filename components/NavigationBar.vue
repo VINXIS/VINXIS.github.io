@@ -12,7 +12,7 @@
         >
             <ul>
                 <li @click="navigate('/')">
-                    Main Page
+                    Home
                 </li>
                 <li @click="navigate('/discography')">
                     Discography
