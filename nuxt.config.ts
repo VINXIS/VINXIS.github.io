@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
     target: "static",
     app: {
+        baseURL: "/VINXIS.github.io/",
         head: {
             meta: [
                 { name: "robots", content: "all" },

@@ -25,5 +25,5 @@ npm run generate
 And then
     
 ```bash
-npm run start
+npm run deploy
 ```

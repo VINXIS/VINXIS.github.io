@@ -7,7 +7,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "start": "nuxt start",
+    "deploy": "gh-pages -d dist",
     "lint": "eslint --ext .ts,.vue --ignore-path .gitignore .",
     "lintfix": "eslint --fix --ext .ts,.vue --ignore-path .gitignore ."
   },
@@ -16,6 +16,7 @@
     "@typescript-eslint/eslint-plugin": "^5.57.0",
     "eslint": "^8.37.0",
     "eslint-plugin-vue": "^9.10.0",
+    "gh-pages": "^5.0.0",
     "nuxt": "^3.3.2"
   }
 }
