@@ -21,3 +21,9 @@ For Github Pages, you run the following:
 ```bash
 npm run generate
 ```
+
+And then
+    
+```bash
+npm run start
+```
