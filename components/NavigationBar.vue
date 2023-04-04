@@ -1,10 +1,12 @@
 <template>
     <div>
-        <div
-            class="hamburger"
-            @click="toggleNavbar"
-        >
-            &#9776;
+        <div class="hamburger-container">
+            <div
+                class="hamburger"
+                @click="toggleNavbar"
+            >
+                &#9776;
+            </div>
         </div>
         <nav
             class="navbar"
