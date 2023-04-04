@@ -37,7 +37,7 @@
                             v-show="isCorsaceLinksVisible"
                             class="sub-list"
                         >
-                            <li><a href="/Corsace">Website</a></li>
+                            <li><a href="https://corsace.io/">Website</a></li>
                             <li><a href="https://discord.gg/Z6vEMsr">Discord</a></li>
                         </ul>
                     </transition>

@@ -5,6 +5,7 @@ export default defineNuxtConfig({
         head: {
             meta: [
                 { name: "robots", content: "all" },
+                { hid: "theme-color", name: "theme-color", content: "#ff6200" },
             ],
         },
         pageTransition: { 
