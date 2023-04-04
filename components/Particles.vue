@@ -23,8 +23,8 @@ onMounted(() => {
             this.x = x;
             this.y = y;
             this.size = Math.random() * 5.25 + 0.25;
-            this.speedX = Math.random() * 1.5 + 0.5;
-            this.speedY = Math.random() * 4 - 2;
+            this.speedX = Math.random() * 0.75 + 0.25;
+            this.speedY = Math.random() * 2 - 1;
             this.colour = colour ?? `hsl(${Math.random() * 360}, 50%, 50%)`;
         }
 

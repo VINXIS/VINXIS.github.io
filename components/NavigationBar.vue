@@ -54,6 +54,12 @@
                         >
                             <li>
                                 <a
+                                    href="https://github.com/VINXIS"
+                                    target="_blank"
+                                >GitHub</a>
+                            </li>
+                            <li>
+                                <a
                                     href="https://vinxis.bandcamp.com"
                                     target="_blank"
                                 >Bandcamp</a>

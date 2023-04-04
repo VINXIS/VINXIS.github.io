@@ -14,7 +14,7 @@
                         v-model="knob.value"
                         type="range"
                         min="0"
-                        max="1"
+                        max="0.99"
                         step="0.01"
                     >
                     <label>{{ knob.label }}: {{ knob.value }}</label>
