@@ -28,8 +28,8 @@
                 Discord (Copies to clipboard): <span
                     class="contact-link"
                     target="_blank"
-                    @click="copyToClipboard('pink blood#6200')"
-                >pink blood#6200</span>
+                    @click="copyToClipboard('corsace.io')"
+                >corsace.io</span>
             </li>
         </ul>
         <ul class="contact-list">
