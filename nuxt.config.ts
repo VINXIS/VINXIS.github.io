@@ -28,5 +28,10 @@ export default defineNuxtConfig({
     css: [
         "~/assets/styles/main.css",
     ],
+    plugins: [
+        {
+            src: "~/plugins/vercel.ts", mode: "client",
+        },
+    ],
     components: true,
 });
