@@ -24,10 +24,13 @@
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <img
+                            <nuxt-img
                                 :src="link.icon"
                                 :alt="link.name"
-                            >
+                                width="30"
+                                height="30"
+                                loading="lazy"
+                            />
                         </a>
                     </div>
                 </div>
@@ -120,8 +123,6 @@ useSeoMeta({
 }
 
 .external-links img {
-    width: 30px;
-    height: 30px;
     margin-right: 5px;
     filter: brightness(0) invert(1);
 }

@@ -1,11 +1,13 @@
 <template>
     <div class="main-page">
         <div class="logo-container">
-            <img
+            <nuxt-img
                 src="/vinxisWhite.png"
                 alt="VINXIS Logo"
-                class="logo"
-            >
+                width="200"
+                height="200"
+                loading="lazy"
+            />
             <h1 class="name">
                 VINXIS
             </h1>
@@ -47,11 +49,6 @@ useSeoMeta({
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.logo {
-    width: 200px;
-    height: auto;
 }
 
 .name {
