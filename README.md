@@ -16,14 +16,4 @@ npm run dev
 
 ## Production
 
-For Github Pages, you run the following:
-
-```bash
-npm run generate
-```
-
-And then
-    
-```bash
-npm run deploy
-```
+It's run via [Vercel](https://vercel.com)
