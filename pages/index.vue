@@ -6,7 +6,6 @@
                 alt="VINXIS Logo"
                 width="200"
                 height="200"
-                loading="lazy"
             />
             <h1 class="name">
                 VINXIS
