@@ -42,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, useSeoMeta } from "#imports";
 
 const inputText = ref("");
 const outputText = ref("");
@@ -92,3 +92,127 @@ useSeoMeta({
     twitterImage: "https://vinxis.moe/vinxisOrange.png",
 });
 </script>
+
+<style>
+.vinglish-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    height: calc(100vh - 20rem);
+}
+
+.text-boxes {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    height: 100%;
+    flex: 1;
+}
+
+.text-boxes textarea {
+    flex: 1;
+    padding: 1rem;
+    font-family: "Avenir", sans-serif;
+    font-size: 1rem;
+    background-color: var(--dark-neutral);
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+}
+
+.text-boxes textarea::placeholder {
+    color: var(--primary);
+}
+
+.text-boxes textarea:focus {
+    outline: none;
+    border: none;
+    box-shadow: 0 0 10px 1px #ffffff;
+}
+
+.knobs {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 25%;
+}
+
+.knob input[type="range"] {
+    width: 100%;
+    background-color: transparent;
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 5px;
+}
+
+.knob input[type="range"]:hover {
+    box-shadow: 0 0 10px 1px #ffffff;
+}
+
+.knob input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: #009aff;
+    border: none;
+    cursor: pointer;
+}
+
+.knob input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 20px;
+    background-color: var(--dark-neutral);
+    border: none;
+    border-radius: 5px;
+}
+
+.knob input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background-color: #009aff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.knob input[type="range"]::-moz-range-track {
+    width: 100%;
+    height: 4px;
+    background-color: var(--neutral);
+    border: none;
+    border-radius: 5px;
+}
+
+.knob input[type="range"]::-ms-thumb {
+    width: 20px;
+    height: 20px;
+    background-color: #009aff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.knob input[type="range"]::-ms-track {
+    width: 100%;
+    height: 4px;
+    background-color: var(--neutral);
+    border: none;
+    border-radius: 5px;
+}
+
+.button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    background-color: var(--dark-neutral);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: min-content;
+}
+
+.button:hover {
+    background-color: var(--secondary);
+}
+</style>

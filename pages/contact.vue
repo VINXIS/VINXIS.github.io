@@ -55,10 +55,10 @@
 </template>
   
 <script setup lang="ts">
-import { ref } from "vue";
+import { useSeoMeta } from "#imports";
 
-const email = ref("oykxf2@gmail.com");
-const corsaceEmail = ref("contact@corsace.io");
+const email = "oykxf2@gmail.com";
+const corsaceEmail = "contact@corsace.io";
 
 function copyToClipboard (text: string) {
     navigator.clipboard.writeText(text);
@@ -82,3 +82,40 @@ useSeoMeta({
     twitterImage: "https://vinxis.moe/vinxisOrange.png",
 });
 </script>
+
+<style>
+.contact-page {
+    background-color: var(--dark-neutral);
+    height: calc(100vh - 15rem);
+    text-align: right;
+}
+
+.contact-description {
+    font-size: 1rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.contact-list {
+    list-style-type: none;
+    padding-left: 0;
+    padding-bottom: 10px;
+}
+
+.contact-item {
+    font-size: 1rem;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.contact-link {
+    color: #009aff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.contact-link:hover {
+    color: #007acc;
+    text-decoration: underline;
+}
+</style>

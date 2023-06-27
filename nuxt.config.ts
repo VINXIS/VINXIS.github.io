@@ -3,6 +3,11 @@ export default defineNuxtConfig({
     target: "static",
     app: {
         head: {
+            charset: "utf-8",
+            viewport: "width=device-width, initial-scale=1",     
+            htmlAttrs: {
+                lang: "en",
+            },
             meta: [
                 { name: "robots", content: "all" },
                 { hid: "theme-color", name: "theme-color", content: "#ff6200" },

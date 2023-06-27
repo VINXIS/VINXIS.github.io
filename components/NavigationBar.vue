@@ -139,3 +139,144 @@ function navigate (path: string) {
     router.push(path);
 }
 </script>
+
+<style>
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: rgba(0, 0, 0, 0.8);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 9;
+    padding-left: 25px;
+}
+
+.navbar.show {
+    transform: translateX(0%);
+    padding-left: 25px;
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.navbar ul li {
+    cursor: pointer;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    position: relative;
+}
+
+.navbar ul li::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--secondary);
+}
+
+.navbar ul li:hover::after {
+    width: 100%;
+}
+
+.navbar ul li:hover {
+    color: var(--secondary);
+    cursor: pointer;
+}
+
+.nav-item {
+    cursor: pointer;
+    position: relative;
+}
+
+.nav-item::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--secondary);
+}
+
+.nav-item:hover::after {
+    width: 100%;
+}
+
+.nav-item:hover {
+    color: var(--secondary);
+}
+
+.navbar ul li:has(ul):hover {
+    color: #ffffff;
+}
+
+.navbar ul li:has(ul)::after {
+    display: none;
+}
+
+.sub-list {
+    list-style-type: none;
+    margin-left: 1.5rem;
+    margin-top: 0.5rem;
+    max-height: 350px;
+    overflow: hidden;
+}
+
+.slideDown-leave-to,
+.slideDown-enter-from {
+    max-height: 0px;
+}
+
+.slideDown-leave-from,
+.slideDown-enter-to {
+    max-height: 350px;
+}
+
+.sub-list li {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.sub-list li a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.sub-list li a:hover {
+    color: var(--secondary);
+}
+
+.hamburger-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    padding: 25px;
+}
+
+.hamburger {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    font-size: 4rem;
+    line-height: 4rem;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.hamburger:hover {
+    color: var(--secondary);
+    transition: color 0.3s ease;
+}
+</style>

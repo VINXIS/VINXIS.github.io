@@ -96,3 +96,17 @@ onMounted(() => {
     animateParticles();
 });
 </script>
+
+<style>
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.particles-top {
+    z-index: 100;
+}
+</style>

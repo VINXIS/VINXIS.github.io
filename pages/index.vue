@@ -15,6 +15,7 @@
 </template>
 
 <script setup lang="ts">
+import { useSeoMeta } from "#imports";
 useSeoMeta({
     title: "VINXIS",
     ogTitle: "VINXIS",
@@ -33,3 +34,28 @@ useSeoMeta({
     twitterImage: "https://vinxis.moe/vinxisOrange.png",
 });
 </script>
+
+<style>
+.main-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    width: 200px;
+    height: auto;
+}
+
+.name {
+    font-size: 3rem;
+    margin: 0;
+}
+</style>
