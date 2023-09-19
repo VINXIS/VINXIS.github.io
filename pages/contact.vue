@@ -51,6 +51,32 @@
                 </NuxtLink>
             </li>
         </ul>
+        <ul class="contact-list">
+            <li class="contact-item">
+                <a
+                    class="contact-link"
+                    href="/resumes/dev.pdf"
+                >
+                    Resume (Software Development)
+                </a>
+            </li>
+            <li class="contact-item">
+                <a
+                    class="contact-link"
+                    href="/resumes/mate.pdf"
+                >
+                    Resume (Materials Engineering - General)
+                </a>
+            </li>
+            <li class="contact-item">
+                <a
+                    class="contact-link"
+                    href="/resumes/mate_biomed.pdf"
+                >
+                    Resume (Materials Engineering - Biomed)
+                </a>
+            </li>
+        </ul>
     </div>
 </template>
   

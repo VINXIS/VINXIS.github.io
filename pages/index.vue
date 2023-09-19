@@ -10,7 +10,7 @@
             <h1 class="name">
                 VINXIS
             </h1>
-            <p>I make music and other stuff</p>
+            <p>Music, Software Dev, Materials Engineering</p>
         </div>
     </div>
 </template>
