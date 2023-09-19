@@ -19,6 +19,6 @@
     "eslint": "^8.37.0",
     "eslint-plugin-vue": "^9.10.0",
     "gh-pages": "^5.0.0",
-    "nuxt": "^3.3.2"
+    "nuxt": "^3.7.3"
   }
 }
