@@ -17,7 +17,6 @@
         <div class="usage-notes">
             <h2>Notes</h2>
             <ul>
-                <li><strong>Downloads:</strong> You can make my music downloadable/available for free wherever I don't have them currently uploaded, as long as you aren't making a profit from it, and credit as expected above.</li>
                 <li><strong>Claim Alert:</strong> Using "Sidetracked Day" in a YouTube video may result in an automatic claim by TuneCore. Unfortunately, they don't allow me to whitelist videos or anything. All other songs should be fine as they were distributed via DistroKid.</li>
                 <li><strong>Contractual Songs:</strong> While none exist currently, in the future, there may be songs contractually created with certain organizations that may limit their use. As they come, I will list them here, and denote them in the <a @click="$router.push('/discography')">Discography</a> page.</li>
             </ul>
