@@ -64,6 +64,7 @@ useSeoMeta({
 
 .usage-page div {
     width: 33%;
+    background: var(--primary);
 }
 
 .usage-page h2 {
