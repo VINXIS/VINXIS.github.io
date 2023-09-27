@@ -2,10 +2,11 @@
     <div class="main-page">
         <div class="logo-container">
             <nuxt-img
+                class="logo"
                 src="/vinxisWhite.png"
                 alt="VINXIS Logo"
-                width="200"
-                height="200"
+                width="400"
+                height="400"
             />
             <h1 class="name">
                 VINXIS
@@ -48,6 +49,15 @@ useSeoMeta({
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.logo {
+    width: 1vw;
+    height: 1vw;
+    min-height: 50px;
+    min-width: 50px;
+    max-height: 400px;
+    max-width: 400px;
 }
 
 .name {

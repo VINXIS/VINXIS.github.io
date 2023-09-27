@@ -9,6 +9,18 @@
     --font-size: 0.833333333vw;
 }
 
+@media screen and (max-width: 768px) {
+    :root {
+        --font-size: 1vw
+    }
+}
+
+@media screen and (max-width: 480px) {
+    :root {
+        --font-size: 2vw
+    }
+}
+
 @font-face {
     font-family: "Avenir";
     font-style: normal;
