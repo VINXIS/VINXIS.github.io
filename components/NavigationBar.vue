@@ -19,6 +19,9 @@
                 <li @click="navigate('/discography')">
                     Discography
                 </li>
+                <li @click="navigate('/usage')">
+                    Music Usage
+                </li>
                 <li @click="navigate('/vinglish')">
                     Vinglish
                 </li>
@@ -59,6 +62,12 @@
                                     href="https://github.com/VINXIS"
                                     target="_blank"
                                 >GitHub</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="https://paypal.me/VINXIS"
+                                    target="_blank"
+                                >PayPal</a>
                             </li>
                             <li>
                                 <a
