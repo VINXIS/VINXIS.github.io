@@ -5,6 +5,8 @@
     --analogous2: #ff3100;
     --neutral: #7c7c7c;
     --dark-neutral: #444444;
+
+    --font-size: 0.833333333vw;
 }
 
 @font-face {
@@ -44,6 +46,10 @@
     margin: 0;
     padding: 0;
     transition: all 0.25s ease;
+}
+
+html {
+    font-size: var(--font-size);
 }
 
 body {
