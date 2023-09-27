@@ -52,12 +52,8 @@ useSeoMeta({
 }
 
 .logo {
-    width: 1vw;
-    height: 1vw;
-    min-height: 50px;
-    min-width: 50px;
-    max-height: 400px;
-    max-width: 400px;
+    width: 10vw;
+    height: 10vw;
 }
 
 .name {
