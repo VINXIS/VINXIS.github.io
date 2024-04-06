@@ -65,15 +65,7 @@
                     class="contact-link"
                     href="/resumes/mate.pdf"
                 >
-                    Resume (Materials Engineering - General)
-                </a>
-            </li>
-            <li class="contact-item">
-                <a
-                    class="contact-link"
-                    href="/resumes/mate_biomed.pdf"
-                >
-                    Resume (Materials Engineering - Biomed)
+                    Resume (Materials Engineering)
                 </a>
             </li>
         </ul>
