@@ -85,10 +85,8 @@ useSeoMeta({
     ogLocale: "en_US",
     ogImage: "https://vinxis.moe/vinxisOrange.png",
     twitterCard: "summary_large_image",
-    twitterSite: "@vinxis1",
     twitterTitle: "Vinglish",
     twitterDescription: "Vinglish is a tool that converts English text to Vinglish.",
-    twitterCreator: "@vinxis1",
     twitterImage: "https://vinxis.moe/vinxisOrange.png",
 });
 </script>

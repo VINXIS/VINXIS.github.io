@@ -55,10 +55,8 @@ useSeoMeta({
     ogLocale: "en_US",
     ogImage: "https://vinxis.moe/vinxisOrange.png",
     twitterCard: "summary_large_image",
-    twitterSite: "@vinxis1",
     twitterTitle: "Discography",
     twitterDescription: "VINXIS's discography",
-    twitterCreator: "@vinxis1",
     twitterImage: "https://vinxis.moe/vinxisOrange.png",
 });
 </script>

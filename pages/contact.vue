@@ -16,12 +16,21 @@
                 </NuxtLink>
             </li>
             <li class="contact-item">
-                Twitter: <NuxtLink
+                Cohost: <NuxtLink
                     class="contact-link"
-                    to="https://twitter.com/vinxis1"
+                    to="https://cohost.org/VINXIS"
                     target="_blank"
                 >
-                    @vinxis1
+                    VINXIS
+                </NuxtLink>
+            </li>
+            <li class="contact-item">
+                Bluesky (Might remove): <NuxtLink
+                    class="contact-link"
+                    to="https://bsky.app/profile/did:plc:fvkpy7co5eynbt5dwbpnyu75"
+                    target="_blank"
+                >
+                    vinxis.moe
                 </NuxtLink>
             </li>
             <li class="contact-item">
@@ -93,10 +102,8 @@ useSeoMeta({
     ogLocale: "en_US",
     ogImage: "https://vinxis.moe/vinxisOrange.png",
     twitterCard: "summary_large_image",
-    twitterSite: "@vinxis1",
     twitterTitle: "Contact",
     twitterDescription: "Contact VINXIS",
-    twitterCreator: "@vinxis1",
     twitterImage: "https://vinxis.moe/vinxisOrange.png",
 });
 </script>

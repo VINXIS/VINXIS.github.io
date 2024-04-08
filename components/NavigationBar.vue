@@ -101,9 +101,15 @@
                             </li>
                             <li>
                                 <a
-                                    href="https://twitter.com/vinxis1"
+                                    href="https://bsky.app/profile/did:plc:fvkpy7co5eynbt5dwbpnyu75"
                                     target="_blank"
-                                >Twitter</a>
+                                >Bluesky (Might remove)</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="https://cohost.org/VINXIS"
+                                    target="_blank"
+                                >Cohost</a>
                             </li>
                             <li>
                                 <a

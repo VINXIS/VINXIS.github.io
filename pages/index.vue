@@ -29,10 +29,8 @@ useSeoMeta({
     ogLocale: "en_US",
     ogImage: "https://vinxis.moe/vinxisOrange.png",
     twitterCard: "summary_large_image",
-    twitterSite: "@vinxis1",
     twitterTitle: "VINXIS",
     twitterDescription: "I make music and other stuff",
-    twitterCreator: "@vinxis1",
     twitterImage: "https://vinxis.moe/vinxisOrange.png",
 });
 </script>
