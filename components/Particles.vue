@@ -9,6 +9,18 @@
 import { ref, onMounted } from "vue";
 
 const colour = "#FFFFFF";
+const cursorColour = "#009aff";
+
+const minSpawn = 0.25;
+const maxSpawn = 5.5;
+
+const minSize = 0.025;
+const sizeRate = 0.025;
+
+const minXSpeed = 0.25;
+const minYSpeed = -1.0;
+const maxXSpeed = 1.0;
+const maxYSpeed = 1.0;
 
 onMounted(() => {
     class Particle {
@@ -19,20 +31,22 @@ onMounted(() => {
         speedY: number;
         colour: string;
 
-        constructor (x: number, y: number, colour?: string) {
+        constructor (x: number, y: number, colour: string, isClick?: boolean) {
+            const minXS = (isClick ? -1 : minXSpeed);
             this.x = x;
             this.y = y;
-            this.size = Math.random() * 5.25 + 0.25;
-            this.speedX = Math.random() * 0.75 + 0.25;
-            this.speedY = Math.random() * 2 - 1;
-            this.colour = colour ?? `hsl(${Math.random() * 360}, 50%, 50%)`;
+            this.size = Math.random() * (maxSpawn - minSpawn) + minSpawn;
+            this.speedX = Math.random() * (maxXSpeed - minXS) + minXS;
+            this.speedY = Math.random() * (maxYSpeed - minYSpeed) + minYSpeed;
+            this.colour = colour;
         }
 
         update () {
             this.x += this.speedX;
             this.y += this.speedY;
 
-            if (this.size > 0.025) this.size -= 0.025;
+            if (this.size > minSize)
+                this.size -= sizeRate;
         }
 
         draw () {
@@ -61,13 +75,13 @@ onMounted(() => {
     canvas.value.width = window.innerWidth;
     canvas.value.height = window.innerHeight;
 
-    function spawnParticles () {
+    function spawnParticles (x?: number, y?: number, cursor?: boolean, isClick?: boolean) {
         if (!canvas.value) return;
 
-        const posX = Math.random() * canvas.value.width;
-        const posY = Math.random() * canvas.value.height;
+        const posX = x ?? Math.random() * canvas.value.width;
+        const posY = y ?? Math.random() * canvas.value.height;
 
-        particles.value.push(new Particle(posX, posY, colour));
+        particles.value.push(new Particle(posX, posY, cursor ? cursorColour : colour, isClick));
     }
 
     function animateParticles () {
@@ -84,7 +98,7 @@ onMounted(() => {
             particles.value[i].update();
             particles.value[i].draw();
 
-            if (particles.value[i].size <= 0.025) {
+            if (particles.value[i].size <= minSize) {
                 particles.value.splice(i, 1);
                 i--;
             }
@@ -92,6 +106,18 @@ onMounted(() => {
         spawnParticles();
         requestAnimationFrame(animateParticles);
     }
+
+    window.addEventListener("mousemove", (event) => {
+        const posX = event.clientX;
+        const posY = event.clientY;
+        spawnParticles(posX, posY, true);
+    });
+    window.addEventListener("mousedown", (event) => {
+        const posX = event.clientX;
+        const posY = event.clientY;
+        for (let i = 0; i < 50; i++)
+            spawnParticles(posX, posY, true, true);
+    });
 
     animateParticles();
 });
