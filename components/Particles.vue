@@ -99,7 +99,8 @@ onMounted(() => {
             particles.value[i].draw();
 
             if (particles.value[i].size <= minSize) {
-                particles.value.splice(i, 1);
+                particles.value[i] = particles.value[particles.value.length - 1];
+                particles.value.pop();
                 i--;
             }
         }
