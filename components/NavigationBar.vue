@@ -1,12 +1,10 @@
 <template>
     <div>
-        <div class="hamburger-container">
-            <div
-                class="hamburger"
-                @click="toggleNavbar"
-            >
-                &#9776;
-            </div>
+        <div
+            class="hamburger"
+            @click="toggleNavbar"
+        >
+            &#9776;
         </div>
         <nav
             class="navbar"
@@ -35,15 +33,13 @@
                     >
                         Corsace
                     </div>
-                    <transition name="slideDown">
-                        <ul
-                            v-show="isCorsaceLinksVisible"
-                            class="sub-list"
-                        >
-                            <li><a href="https://corsace.io/">Website</a></li>
-                            <li><a href="https://discord.gg/Z6vEMsr">Discord</a></li>
-                        </ul>
-                    </transition>
+                    <ul
+                        id="corsace-links"
+                        class="sub-list"
+                    >
+                        <li><a href="https://corsace.io/">Website</a></li>
+                        <li><a href="https://discord.gg/Z6vEMsr">Discord</a></li>
+                    </ul>
                 </li>
                 <li>
                     <div
@@ -52,73 +48,71 @@
                     >
                         External Links
                     </div>
-                    <transition name="slideDown">
-                        <ul
-                            v-show="isExternalLinksVisible"
-                            class="sub-list"
-                        >
-                            <li>
-                                <a
-                                    href="https://github.com/VINXIS"
-                                    target="_blank"
-                                >GitHub</a>
-                            </li>
-                            <li>
-                                <a
-                                    href="https://paypal.me/VINXIS"
-                                    target="_blank"
-                                >PayPal</a>
-                            </li>
-                            <li>
-                                <a
-                                    href="https://vinxis.bandcamp.com"
-                                    target="_blank"
-                                >Bandcamp</a>
-                            </li>
-                            <li>
-                                <a
-                                    href="https://soundcloud.com/vinxis"
-                                    target="_blank"
-                                >Soundcloud</a>
-                            </li>
-                            <li>
-                                <a
-                                    href="https://www.youtube.com/user/OYKXF"
-                                    target="_blank"
-                                >Youtube</a>
-                            </li>
-                            <li>
-                                <a
-                                    href="https://open.spotify.com/artist/2cNVX1qSKExpOojOx3INu8"
-                                    target="_blank"
-                                >Spotify</a>
-                            </li>
-                            <li>
-                                <a
-                                    href="https://itunes.apple.com/us/artist/vinxis/1342478754"
-                                    target="_blank"
-                                >Apple Music</a>
-                            </li>
-                            <li>
-                                <a
-                                    href="https://bsky.app/profile/did:plc:fvkpy7co5eynbt5dwbpnyu75"
-                                    target="_blank"
-                                >Bluesky (Might remove)</a>
-                            </li>
-                            <li>
-                                <a
-                                    href="https://cohost.org/VINXIS"
-                                    target="_blank"
-                                >Cohost</a>
-                            </li>
-                            <li>
-                                <a
-                                    href="https://osu.ppy.sh/beatmaps/artists/22"
-                                    target="_blank"
-                                >osu!</a>
-                            </li>
-                        </ul>
-                    </transition>
+                    <ul
+                        id="external-links"
+                        class="sub-list"
+                    >
+                        <li>
+                            <a
+                                href="https://github.com/VINXIS"
+                                target="_blank"
+                            >GitHub</a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://paypal.me/VINXIS"
+                                target="_blank"
+                            >PayPal</a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://vinxis.bandcamp.com"
+                                target="_blank"
+                            >Bandcamp</a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://soundcloud.com/vinxis"
+                                target="_blank"
+                            >Soundcloud</a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://www.youtube.com/user/OYKXF"
+                                target="_blank"
+                            >Youtube</a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://open.spotify.com/artist/2cNVX1qSKExpOojOx3INu8"
+                                target="_blank"
+                            >Spotify</a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://itunes.apple.com/us/artist/vinxis/1342478754"
+                                target="_blank"
+                            >Apple Music</a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://bsky.app/profile/did:plc:fvkpy7co5eynbt5dwbpnyu75"
+                                target="_blank"
+                            >Bluesky (Might remove)</a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://cohost.org/VINXIS"
+                                target="_blank"
+                            >Cohost</a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://osu.ppy.sh/beatmaps/artists/22"
+                                target="_blank"
+                            >osu!</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>
@@ -126,7 +120,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
@@ -135,22 +129,40 @@ const isNavbarVisible = ref(false);
 const isCorsaceLinksVisible = ref(false);
 const isExternalLinksVisible = ref(false);
 
+onMounted(() => {
+    setDynamicHeight("corsace-links", isCorsaceLinksVisible.value);
+    setDynamicHeight("external-links", isExternalLinksVisible.value);
+});
+
 function toggleNavbar () {
     isNavbarVisible.value = !isNavbarVisible.value;
 }
 
+function setDynamicHeight (id: string, visible: boolean) {
+    const element = document.getElementById(id);
+    if (!element)
+        return;
+    
+    element.style.height = visible ? `${element.scrollHeight}px` : "0";
+    element.style.marginTop = visible ? "0.5rem" : "0";
+}
+
 function toggleCorsaceLinks () {
     isCorsaceLinksVisible.value = !isCorsaceLinksVisible.value;
+    setDynamicHeight("corsace-links", isCorsaceLinksVisible.value);
 }
 
 function toggleExternalLinks () {
     isExternalLinksVisible.value = !isExternalLinksVisible.value;
+    setDynamicHeight("external-links", isExternalLinksVisible.value);
 }
 
 function navigate (path: string) {
     isNavbarVisible.value = false;
     isCorsaceLinksVisible.value = false;
     isExternalLinksVisible.value = false;
+    setDynamicHeight("corsace-links", isCorsaceLinksVisible.value);
+    setDynamicHeight("external-links", isExternalLinksVisible.value);
     router.push(path);
 }
 </script>
@@ -175,12 +187,28 @@ function navigate (path: string) {
 
 .navbar.show {
     transform: translateX(0%);
-    padding-left: 25px;
 }
 
 .navbar ul {
     list-style-type: none;
     padding: 0;
+    max-height: 75%;
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--secondary) rgba(0, 0, 0, 0);
+}
+
+.navbar ul * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.navbar ul *::-webkit-scrollbar {
+    display: none;
+}
+
+.navbar ul li:nth-child(even) {
+    color: #ffffff;
 }
 
 .navbar ul li {
@@ -190,31 +218,17 @@ function navigate (path: string) {
     position: relative;
 }
 
-.navbar ul li::after {
-    content: "";
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background-color: var(--secondary);
-}
-
-.navbar ul li:hover::after {
-    width: 100%;
-}
-
 .navbar ul li:hover {
-    color: var(--secondary);
     cursor: pointer;
 }
 
 .nav-item {
     cursor: pointer;
     position: relative;
+    overflow: visible;
 }
 
-.nav-item::after {
+.nav-item::after, .navbar ul li::after {
     content: "";
     position: absolute;
     bottom: -2px;
@@ -224,11 +238,11 @@ function navigate (path: string) {
     background-color: var(--secondary);
 }
 
-.nav-item:hover::after {
+.nav-item:hover::after, .navbar ul li:hover::after {
     width: 100%;
 }
 
-.nav-item:hover {
+.nav-item:hover, .navbar ul li:hover {
     color: var(--secondary);
 }
 
@@ -244,18 +258,7 @@ function navigate (path: string) {
     list-style-type: none;
     margin-left: 1.5rem;
     margin-top: 0.5rem;
-    max-height: 350px;
     overflow: hidden;
-}
-
-.slideDown-leave-to,
-.slideDown-enter-from {
-    max-height: 0px;
-}
-
-.slideDown-leave-from,
-.slideDown-enter-to {
-    max-height: 350px;
 }
 
 .sub-list li {
@@ -263,21 +266,18 @@ function navigate (path: string) {
     margin-bottom: 0.5rem;
 }
 
+.sub-list li:last-child {
+    margin-bottom: 0;
+}
+
 .sub-list li a {
+    display: block;
     color: inherit;
     text-decoration: none;
 }
 
 .sub-list li a:hover {
     color: var(--secondary);
-}
-
-.hamburger-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    padding: 25px;
 }
 
 .hamburger {
