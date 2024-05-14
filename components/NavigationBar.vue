@@ -54,6 +54,12 @@
                     >
                         <li>
                             <a
+                                href="https://vinxis.cohost.org/"
+                                target="_blank"
+                            >Cohost</a>
+                        </li>
+                        <li>
+                            <a
                                 href="https://github.com/VINXIS"
                                 target="_blank"
                             >GitHub</a>
@@ -93,18 +99,6 @@
                                 href="https://itunes.apple.com/us/artist/vinxis/1342478754"
                                 target="_blank"
                             >Apple Music</a>
-                        </li>
-                        <li>
-                            <a
-                                href="https://bsky.app/profile/did:plc:fvkpy7co5eynbt5dwbpnyu75"
-                                target="_blank"
-                            >Bluesky (Might remove)</a>
-                        </li>
-                        <li>
-                            <a
-                                href="https://cohost.org/VINXIS"
-                                target="_blank"
-                            >Cohost</a>
                         </li>
                         <li>
                             <a

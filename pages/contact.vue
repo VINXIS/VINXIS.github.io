@@ -8,29 +8,20 @@
         </p>
         <ul class="contact-list">
             <li class="contact-item">
-                Email: <NuxtLink
-                    class="contact-link"
-                    :to="`mailto:${email}`"
-                >
-                    {{ email }}
-                </NuxtLink>
-            </li>
-            <li class="contact-item">
                 Cohost: <NuxtLink
                     class="contact-link"
-                    to="https://cohost.org/VINXIS"
+                    to="https://vinxis.cohost.org/"
                     target="_blank"
                 >
                     VINXIS
                 </NuxtLink>
             </li>
             <li class="contact-item">
-                Bluesky (Might remove): <NuxtLink
+                Email: <NuxtLink
                     class="contact-link"
-                    to="https://bsky.app/profile/did:plc:fvkpy7co5eynbt5dwbpnyu75"
-                    target="_blank"
+                    :to="`mailto:${email}`"
                 >
-                    vinxis.moe
+                    {{ email }}
                 </NuxtLink>
             </li>
             <li class="contact-item">
