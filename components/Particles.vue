@@ -32,7 +32,7 @@ onMounted(() => {
         colour: string;
 
         constructor (x: number, y: number, colour: string, isClick?: boolean) {
-            const minXS = (isClick ? -1 : minXSpeed);
+            const minXS = isClick ? -1 : minXSpeed;
             this.x = x;
             this.y = y;
             this.size = Math.random() * (maxSpawn - minSpawn) + minSpawn;
@@ -64,9 +64,8 @@ onMounted(() => {
     const canvas = ref<HTMLCanvasElement | null>(null);
     const ctx = ref<CanvasRenderingContext2D | null>(null);
 
-    if (!canvas.value) {
+    if (!canvas.value)
         canvas.value = document.getElementsByClassName("particles")[0] as HTMLCanvasElement;
-    }
 
     ctx.value = canvas.value.getContext("2d");
 
@@ -98,26 +97,21 @@ onMounted(() => {
             particles.value[i].update();
             particles.value[i].draw();
 
-            if (particles.value[i].size <= minSize) {
-                particles.value[i] = particles.value[particles.value.length - 1];
-                particles.value.pop();
-                i--;
-            }
+            if (particles.value[i].size > minSize)
+                continue;
+
+            particles.value[i] = particles.value[particles.value.length - 1];
+            particles.value.pop();
+            i--;
         }
         spawnParticles();
         requestAnimationFrame(animateParticles);
     }
 
-    window.addEventListener("mousemove", (event) => {
-        const posX = event.clientX;
-        const posY = event.clientY;
-        spawnParticles(posX, posY, true);
-    });
+    window.addEventListener("mousemove", (event) => spawnParticles(event.clientX, event.clientY, true));
     window.addEventListener("mousedown", (event) => {
-        const posX = event.clientX;
-        const posY = event.clientY;
         for (let i = 0; i < 50; i++)
-            spawnParticles(posX, posY, true, true);
+            spawnParticles(event.clientX, event.clientY, true, true);
     });
 
     animateParticles();
