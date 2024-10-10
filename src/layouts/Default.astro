@@ -1,29 +1,29 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
-import SpeedInsights from '@vercel/speed-insights/astro';
-import MetaTags from '../components/MetaTags.astro';
-import Particles from '../components/Particles.astro';
-import NavigationBar from '../components/NavigationBar.astro';
-import '../styles/main.css';
+import { ViewTransitions } from "astro:transitions";
+import SpeedInsights from "@vercel/speed-insights/astro";
+import MetaTags from "../components/MetaTags.astro";
+import Particles from "../components/Particles.astro";
+import NavigationBar from "../components/NavigationBar.astro";
+import "../styles/main.css";
 
 const { meta } = Astro.props;
 ---
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <MetaTags {...meta} />
-    <ViewTransitions />
-    <SpeedInsights />
-  </head>
-  <body>
-    <Particles />
-    <NavigationBar />
-    <main transition:animate="slide" class="fade-in">
-      <slot />
-    </main>
-  </body>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <MetaTags {...meta} />
+        <ViewTransitions />
+        <SpeedInsights />
+    </head>
+    <body>
+        <Particles />
+        <NavigationBar />
+        <main transition:animate="slide" class="fade-in">
+            <slot />
+        </main>
+    </body>
 </html>
 
 <style>

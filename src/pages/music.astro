@@ -1,13 +1,13 @@
 ---
-import { Image } from 'astro:assets';
-import Default from '../layouts/Default.astro';
-import { songs, type Service } from '../data/songs';
+import { Image } from "astro:assets";
+import Default from "../layouts/Default.astro";
+import { songs, type Service } from "../data/songs";
 import youtubeIcon from "../images/discography/youtube.png";
 import soundcloudIcon from "../images/discography/soundcloud.png";
 import bandcampIcon from "../images/discography/bandcamp.png";
 import spotifyIcon from "../images/discography/spotify.png";
 import appleMusicIcon from "../images/discography/apple.png";
-import type { ImageMetadata } from 'astro';
+import type { ImageMetadata } from "astro";
 
 const nameToIcon: Record<Service, ImageMetadata> = {
     "Youtube": youtubeIcon,
@@ -15,7 +15,7 @@ const nameToIcon: Record<Service, ImageMetadata> = {
     "Bandcamp": bandcampIcon,
     "Spotify": spotifyIcon,
     "Apple": appleMusicIcon,
-}
+};
 
 const meta = {
     title: "Music",
@@ -80,26 +80,26 @@ const meta = {
                         <div class="grid-item-content">
                             <h3>{song.title}</h3>
                             <div class="grid-item-content-row">
-                            <p>{song.genre}</p>
-                            <p>{song.year}</p>
+                                <p>{song.genre}</p>
+                                <p>{song.year}</p>
                             </div>
                             <p>{song.length}</p>
                             <div class="external-links">
-                            {song.links.map(link => (
-                                <a
-                                href={link.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                >
-                                <Image
-                                    src={nameToIcon[link.name]}
-                                    alt={link.name}
-                                    width="30"
-                                    height="30"
-                                    loading="lazy"
-                                />
-                                </a>
-                            ))}
+                                {song.links.map(link => (
+                                    <a
+                                        href={link.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        <Image
+                                            src={nameToIcon[link.name]}
+                                            alt={link.name}
+                                            width="30"
+                                            height="30"
+                                            loading="lazy"
+                                        />
+                                    </a>
+                                ))}
                             </div>
                         </div>
                     </div>
@@ -110,7 +110,7 @@ const meta = {
 </Default>
 
 <script>
-    document.addEventListener('astro:page-load', () => {
+    document.addEventListener("astro:page-load", () => {
         const boxToggle = document.getElementById("usage-box-toggle")!;
         const usageBox = document.querySelector(".usage-box")!;
         const scrollHeight = usageBox.scrollHeight;

@@ -1,100 +1,100 @@
 <div transition:persist>
-  <div class="hamburger" id="hamburger">
+    <div class="hamburger" id="hamburger">
     &#9776;
-  </div>
-  <nav class="navbar" id="navbar">
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/music">Music</a></li>
-      <li><a href="/vinglish">Vinglish</a></li>
-      <li><a href="/contact">Contact</a></li>
-      <li>
-        <div class="nav-item" id="corsace-header">Corsace</div>
-        <ul id="corsace-links" class="sub-list">
-          <li><a href="https://corsace.io/">Website</a></li>
-          <li><a href="https://discord.gg/Z6vEMsr">Discord</a></li>
+    </div>
+    <nav class="navbar" id="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/music">Music</a></li>
+            <li><a href="/vinglish">Vinglish</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li>
+                <div class="nav-item" id="corsace-header">Corsace</div>
+                <ul id="corsace-links" class="sub-list">
+                    <li><a href="https://corsace.io/">Website</a></li>
+                    <li><a href="https://discord.gg/Z6vEMsr">Discord</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="nav-item" id="external-header">External Links</div>
+                <ul id="external-links" class="sub-list">
+                    <li>
+                        <a
+                            href="https://github.com/VINXIS"
+                            target="_blank"
+                        >GitHub</a>
+                    </li>
+                    <li>
+                        <a
+                            href="https://paypal.me/VINXIS"
+                            target="_blank"
+                        >PayPal</a>
+                    </li>
+                    <li>
+                        <a
+                            href="https://vinxis.bandcamp.com"
+                            target="_blank"
+                        >Bandcamp</a>
+                    </li>
+                    <li>
+                        <a
+                            href="https://soundcloud.com/vinxis"
+                            target="_blank"
+                        >Soundcloud</a>
+                    </li>
+                    <li>
+                        <a
+                            href="https://www.youtube.com/user/OYKXF"
+                            target="_blank"
+                        >Youtube</a>
+                    </li>
+                    <li>
+                        <a
+                            href="https://open.spotify.com/artist/2cNVX1qSKExpOojOx3INu8"
+                            target="_blank"
+                        >Spotify</a>
+                    </li>
+                    <li>
+                        <a
+                            href="https://itunes.apple.com/us/artist/vinxis/1342478754"
+                            target="_blank"
+                        >Apple Music</a>
+                    </li>
+                </ul>
+            </li>
         </ul>
-      </li>
-      <li>
-        <div class="nav-item" id="external-header">External Links</div>
-        <ul id="external-links" class="sub-list">
-            <li>
-                <a
-                    href="https://github.com/VINXIS"
-                    target="_blank"
-                >GitHub</a>
-            </li>
-            <li>
-                <a
-                    href="https://paypal.me/VINXIS"
-                    target="_blank"
-                >PayPal</a>
-            </li>
-            <li>
-                <a
-                    href="https://vinxis.bandcamp.com"
-                    target="_blank"
-                >Bandcamp</a>
-            </li>
-            <li>
-                <a
-                    href="https://soundcloud.com/vinxis"
-                    target="_blank"
-                >Soundcloud</a>
-            </li>
-            <li>
-                <a
-                    href="https://www.youtube.com/user/OYKXF"
-                    target="_blank"
-                >Youtube</a>
-            </li>
-            <li>
-                <a
-                    href="https://open.spotify.com/artist/2cNVX1qSKExpOojOx3INu8"
-                    target="_blank"
-                >Spotify</a>
-            </li>
-            <li>
-                <a
-                    href="https://itunes.apple.com/us/artist/vinxis/1342478754"
-                    target="_blank"
-                >Apple Music</a>
-            </li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
+    </nav>
 </div>
 
 <script>
     let isNavbarVisible = false;
     const visibleSubMenus: Record<string, boolean> = {};
 
-    document.getElementById('hamburger')!.addEventListener('click', () => {
-      isNavbarVisible = !isNavbarVisible;
-      const navbar = document.getElementById('navbar');
-      if (navbar)
-        navbar.classList.toggle('show', isNavbarVisible);
+    document.getElementById("hamburger")!.addEventListener("click", () => {
+        isNavbarVisible = !isNavbarVisible;
+        const navbar = document.getElementById("navbar");
+        if (navbar)
+            navbar.classList.toggle("show", isNavbarVisible);
     });
   
-    function toggleSubMenu(id: string) {
-      visibleSubMenus[id] = !visibleSubMenus[id];
-      const submenu = document.getElementById(id);
-      if (submenu) {
-        submenu.style.height = visibleSubMenus[id] ? `${submenu.scrollHeight}px` : '0';
-        submenu.style.marginTop = visibleSubMenus[id] ? '0.5rem' : '0';
-      }
+    function toggleSubMenu (id: string) {
+        visibleSubMenus[id] = !visibleSubMenus[id];
+        const submenu = document.getElementById(id);
+        if (submenu) {
+            submenu.style.height = visibleSubMenus[id] ? `${submenu.scrollHeight}px` : "0";
+            submenu.style.marginTop = visibleSubMenus[id] ? "0.5rem" : "0";
+        }
     }
 
-    const headers = [document.getElementById('corsace-header')!, document.getElementById('external-header')!];
+    const headers = [document.getElementById("corsace-header")!, document.getElementById("external-header")!];
     headers.forEach(header => {
-      const linksID = header.id.replace('-header', '-links');
-      const linksIDElement = document.getElementById(linksID)!;
-      linksIDElement.style.height = '0';
-      linksIDElement.style.marginTop = '0';
-      header.addEventListener('click', () => {
-        toggleSubMenu(linksID);
-      });
+        const linksID = header.id.replace("-header", "-links");
+        const linksIDElement = document.getElementById(linksID)!;
+        linksIDElement.style.height = "0";
+        linksIDElement.style.marginTop = "0";
+        header.addEventListener("click", () => {
+            toggleSubMenu(linksID);
+        });
     });
 </script>
 
