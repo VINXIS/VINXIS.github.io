@@ -68,14 +68,18 @@
 
 <script>
     let isNavbarVisible = false;
-    const visibleSubMenus: Record<string, boolean> = {};
-
-    document.getElementById("hamburger")!.addEventListener("click", () => {
+    function toggleNavbar () {
         isNavbarVisible = !isNavbarVisible;
         const navbar = document.getElementById("navbar");
         if (navbar)
             navbar.classList.toggle("show", isNavbarVisible);
-    });
+    };
+
+    const visibleSubMenus: Record<string, boolean> = {};
+
+    const navLinks = document.querySelectorAll("#navbar a[href^=\"/\"]");
+    navLinks.forEach(link => link.addEventListener("click", toggleNavbar));
+    document.getElementById("hamburger")!.addEventListener("click", toggleNavbar);
   
     function toggleSubMenu (id: string) {
         visibleSubMenus[id] = !visibleSubMenus[id];
