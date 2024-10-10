@@ -1,0 +1,98 @@
+<canvas id="particles-canvas" class="particles" transition:persist/>
+
+<script>
+    class Particle {
+        x: number;
+        y: number;
+        size: number;
+        speedX: number;
+        speedY: number;
+        colour: string;
+
+        constructor (x: number, y: number, colour: string, isClick = false) {
+            const minXSpeed = isClick ? -1 : 0.25;
+            this.x = x;
+            this.y = y;
+            this.size = Math.random() * (5.5 - 0.25) + 0.25;
+            this.speedX = Math.random() * (1.0 - minXSpeed) + minXSpeed;
+            this.speedY = Math.random() * (1.0 - -1.0) + -1.0;
+            this.colour = colour;
+        }
+  
+        update () {
+            this.x += this.speedX;
+            this.y += this.speedY;
+  
+            if (this.size > 0.025) {
+                this.size -= 0.025;
+            }
+        }
+  
+        draw (ctx: CanvasRenderingContext2D) {
+            ctx.fillStyle = this.colour;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.closePath();
+            ctx.fill();
+        }
+    }
+  
+    const colour = "#FFFFFF";
+    const cursorColour = "#009aff";
+    const particles: Particle[] = [];
+  
+    const canvas = document.getElementById("particles-canvas")! as HTMLCanvasElement;
+    const ctx = canvas.getContext("2d")!;
+  
+    function resizeCanvas () {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+  
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+  
+    function spawnParticles (x: number, y: number, isCursor = false, isClick = false) {
+        particles.push(new Particle(x, y, isCursor ? cursorColour : colour, isClick));
+    }
+  
+    function animateParticles () {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+        particles.forEach((particle, index) => {
+            particle.update();
+            particle.draw(ctx);
+  
+            if (particle.size <= 0.025) {
+                particles.splice(index, 1);
+            }
+        });
+  
+        // Spawn random particles
+        spawnParticles(Math.random() * canvas.width, Math.random() * canvas.height);
+  
+        requestAnimationFrame(animateParticles);
+    }
+  
+    window.addEventListener("mousemove", (event) => {
+        spawnParticles(event.clientX, event.clientY, true);
+    });
+  
+    window.addEventListener("mousedown", (event) => {
+        for (let i = 0; i < 50; i++) {
+            spawnParticles(event.clientX, event.clientY, true, true);
+        }
+    });
+  
+    animateParticles();
+</script>
+  
+<style>
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+</style>
