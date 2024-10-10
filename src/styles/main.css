@@ -52,6 +52,14 @@
     }
 }
 
+.fade-in {
+    animation: fadeIn ease 1s;
+    -webkit-animation: fadeIn ease 1s;
+    -moz-animation: fadeIn ease 1s;
+    -o-animation: fadeIn ease 1s;
+    -ms-animation: fadeIn ease 1s;
+}
+
 *,
 *::before,
 *::after {
@@ -71,16 +79,13 @@ body {
     margin: 0;
 }
 
+a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
 .no-scrollbar {
     overflow: hidden;
-}
-
-.page-leave-to {
-    transform: translateX(-100%);
-}
-
-.page-enter-from {
-    transform: translateX(100%);
 }
 
 .page {

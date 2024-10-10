@@ -1,54 +1,69 @@
-<template>
+---
+import Default from '../layouts/Default.astro';
+
+const email = "oykxf2@gmail.com";
+const corsaceEmail = "contact@corsace.io";
+
+const meta = {
+    title: "Contact",
+    ogTitle: "Contact",
+    description: "Contact VINXIS",
+    ogDescription: "Contact VINXIS",
+    ogType: "website",
+    ogUrl: "https://vinxis.moe",
+    ogSiteName: "Vinxis",
+    ogLocale: "en_US",
+    ogImage: "https://vinxis.moe/vinxisOrange.png",
+    twitterCard: "summary_large_image",
+    twitterTitle: "Contact",
+    twitterDescription: "Contact VINXIS",
+    twitterImage: "https://vinxis.moe/vinxisOrange.png",
+}
+---
+
+<Default meta={meta}>
     <div class="page contact-page">
         <h1 class="title">
             Contact
         </h1>
         <p class="contact-description">
-            If you have any questions or would like to get in touch, please reach out through the following channels:
+            If you have any questions or would like to get in touch, please reach out through the following methods:
         </p>
         <ul class="contact-list">
             <li class="contact-item">
-                Cohost: <NuxtLink
+                Email: <a
                     class="contact-link"
-                    to="https://vinxis.cohost.org/"
-                    target="_blank"
+                    href={`mailto:${email}`}
                 >
-                    VINXIS
-                </NuxtLink>
+                    {email}
+                </a>
             </li>
             <li class="contact-item">
-                Email: <NuxtLink
+                Discord: <a
                     class="contact-link"
-                    :to="`mailto:${email}`"
+                    href="https://discord.com/users/352605625869402123"
                 >
-                    {{ email }}
-                </NuxtLink>
-            </li>
-            <li class="contact-item">
-                Discord (Copies to clipboard): <span
-                    class="contact-link"
-                    target="_blank"
-                    @click="copyToClipboard('corsace.io')"
-                >corsace.io</span>
+                    corsace.io
+                </a>
             </li>
         </ul>
         <ul class="contact-list">
             <li class="contact-item">
-                Corsace Email: <NuxtLink
+                Corsace Email: <a
                     class="contact-link"
-                    :to="`mailto:${corsaceEmail}`"
+                    href={`mailto:${corsaceEmail}`}
                 >
-                    {{ corsaceEmail }}
-                </NuxtLink>
+                    {corsaceEmail}
+                </a>
             </li>
             <li class="contact-item">
-                Corsace Discord: <NuxtLink
+                Corsace Discord: <a
                     class="contact-link"
-                    to="https://discord.gg/Z6vEMsr"
+                    href="https://discord.gg/Z6vEMsr"
                     target="_blank"
                 >
                     https://discord.gg/Z6vEMsr
-                </NuxtLink>
+                </a>
             </li>
         </ul>
         <ul class="contact-list">
@@ -70,34 +85,7 @@
             </li>
         </ul>
     </div>
-</template>
-  
-<script setup lang="ts">
-import { useSeoMeta } from "#imports";
-
-const email = "oykxf2@gmail.com";
-const corsaceEmail = "contact@corsace.io";
-
-function copyToClipboard (text: string) {
-    navigator.clipboard.writeText(text);
-}
-
-useSeoMeta({
-    title: "Contact",
-    ogTitle: "Contact",
-    description: "Contact VINXIS",
-    ogDescription: "Contact VINXIS",
-    ogType: "website",
-    ogUrl: "https://vinxis.moe",
-    ogSiteName: "Vinxis",
-    ogLocale: "en_US",
-    ogImage: "https://vinxis.moe/vinxisOrange.png",
-    twitterCard: "summary_large_image",
-    twitterTitle: "Contact",
-    twitterDescription: "Contact VINXIS",
-    twitterImage: "https://vinxis.moe/vinxisOrange.png",
-});
-</script>
+</Default>
 
 <style>
 .contact-page {
