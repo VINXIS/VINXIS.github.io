@@ -111,20 +111,22 @@ const meta = {
 </Default>
 
 <script>
-    const boxToggle = document.getElementById("usage-box-toggle")!;
-    const usageBox = document.querySelector(".usage-box")!;
-    const scrollHeight = usageBox.scrollHeight;
+    document.addEventListener('astro:page-load', () => {
+        const boxToggle = document.getElementById("usage-box-toggle")!;
+        const usageBox = document.querySelector(".usage-box")!;
+        const scrollHeight = usageBox.scrollHeight;
 
-    usageBox.setAttribute("style", `height: 0px; margin-bottom: 0px`);
+        usageBox.setAttribute("style", `height: 0px; margin-bottom: 0px`);
 
-    boxToggle.addEventListener("click", () => {
-        if (usageBox.getAttribute("style") === `height: 0px; margin-bottom: 0px`) {
-            usageBox.setAttribute("style", `height: ${scrollHeight}px; margin-bottom: 2rem`);
-            boxToggle.textContent = "See Less";
-        } else {
-            usageBox.setAttribute("style", `height: 0px; margin-bottom: 0px`);
-            boxToggle.textContent = "See More";
-        }
+        boxToggle.addEventListener("click", () => {
+            if (usageBox.getAttribute("style") === `height: 0px; margin-bottom: 0px`) {
+                usageBox.setAttribute("style", `height: ${scrollHeight}px; margin-bottom: 2rem`);
+                boxToggle.textContent = "See Less";
+            } else {
+                usageBox.setAttribute("style", `height: 0px; margin-bottom: 0px`);
+                boxToggle.textContent = "See More";
+            }
+        });
     });
 </script>
 
