@@ -16,11 +16,11 @@ const meta = {
     ogUrl: "https://vinxis.moe/vinglish",
     ogSiteName: "VINXIS",
     ogLocale: "en_US",
-    ogImage: "https://vinxis.moe/vinxisOrange.png",
+    ogImage: "https://vinxis.moe/metaImage.png",
     twitterCard: "summary_large_image",
     twitterTitle: "Vinglish",
     twitterDescription: "Vinglish is a tool that converts English text to Vinglish.",
-    twitterImage: "https://vinxis.moe/vinxisOrange.png",
+    twitterImage: "https://vinxis.moe/metaImage.png",
 };
 ---
 
@@ -62,47 +62,49 @@ const meta = {
 </Default>
 
 <script>
-    let inputText = "";
-    document.getElementById("input")!.addEventListener("input", e => {
-        inputText = (e.target as HTMLTextAreaElement).value;
-        generate();
-    });
-
-    const knobs = [
-        { label: "Swap Strength", value: 0.05 },
-        { label: "Noise Strength", value: 0.13 },
-        { label: "Insertion Strength", value: 0.08 },
-    ];
-
-    const chars = "`1234567890)(*&^%$#@!~qwertyuiop[]`\\';lkjhgfdsazxcvbnm,./";
-
-    function generate () {
-        const arr = inputText.split("");
-        for (let i = 0; i < arr.length - 1; i++) {
-            if (knobs[0]!.value > Math.random()) {
-                const swapVal = arr[i]!;
-                arr[i] = arr[i + 1]!;
-                arr[i + 1] = swapVal;
-            }
-
-            if (knobs[1]!.value > Math.random())
-                if (knobs[2]!.value > Math.random())
-                    arr.splice(i, 0, chars[chars.indexOf(arr[i]!) + Math.floor(Math.random() * 2)]!);
-                else
-                    arr.splice(i, 1);
-        }
-        (document.getElementById("output") as HTMLTextAreaElement).value = arr.join("");
-    }
-
-    document.querySelectorAll("div.knob input[type='range']").forEach((knob, index) => {
-        (knob as HTMLInputElement).value = knobs[index]!.value.toString();
-        knob.addEventListener("input", e => {
-            knobs[index]!.value = parseFloat((e.target as HTMLInputElement).value);
-            (e.target as HTMLInputElement).nextElementSibling!.textContent = `${knobs[index]!.label}: ${knobs[index]!.value}`;
+    document.addEventListener("astro:page-load", () => {
+        let inputText = "";
+        document.getElementById("input")!.addEventListener("input", e => {
+            inputText = (e.target as HTMLTextAreaElement).value;
             generate();
         });
+
+        const knobs = [
+            { label: "Swap Strength", value: 0.05 },
+            { label: "Noise Strength", value: 0.13 },
+            { label: "Insertion Strength", value: 0.08 },
+        ];
+
+        const chars = "`1234567890)(*&^%$#@!~qwertyuiop[]`\\';lkjhgfdsazxcvbnm,./";
+
+        function generate () {
+            const arr = inputText.split("");
+            for (let i = 0; i < arr.length - 1; i++) {
+                if (knobs[0]!.value > Math.random()) {
+                    const swapVal = arr[i]!;
+                    arr[i] = arr[i + 1]!;
+                    arr[i + 1] = swapVal;
+                }
+
+                if (knobs[1]!.value > Math.random())
+                    if (knobs[2]!.value > Math.random())
+                        arr.splice(i, 0, chars[chars.indexOf(arr[i]!) + Math.floor(Math.random() * 2)]!);
+                    else
+                        arr.splice(i, 1);
+            }
+            (document.getElementById("output") as HTMLTextAreaElement).value = arr.join("");
+        }
+
+        document.querySelectorAll("div.knob input[type='range']").forEach((knob, index) => {
+            (knob as HTMLInputElement).value = knobs[index]!.value.toString();
+            knob.addEventListener("input", e => {
+                knobs[index]!.value = parseFloat((e.target as HTMLInputElement).value);
+                (e.target as HTMLInputElement).nextElementSibling!.textContent = `${knobs[index]!.label}: ${knobs[index]!.value}`;
+                generate();
+            });
+        });
+        document.getElementById("generate")!.addEventListener("click", generate);
     });
-    document.getElementById("generate")!.addEventListener("click", generate);
 </script>
 
 <style>
@@ -125,22 +127,21 @@ const meta = {
 .text-boxes textarea {
     flex: 1;
     padding: 1rem;
-    font-family: "Avenir", sans-serif;
+    font-family: "Inconsolata", sans-serif;
     font-size: 1rem;
-    background-color: var(--dark-neutral);
+    background-color: var(--neutral);
     color: #ffffff;
     border: none;
     border-radius: 5px;
 }
 
 .text-boxes textarea::placeholder {
-    color: var(--primary);
+    color: white;
 }
 
 .text-boxes textarea:focus {
     outline: none;
     border: none;
-    box-shadow: 0 0 10px 1px #ffffff;
 }
 
 .knobs {
@@ -158,15 +159,11 @@ const meta = {
     border-radius: 5px;
 }
 
-.knob input[type="range"]:hover {
-    box-shadow: 0 0 10px 1px #ffffff;
-}
-
 .knob input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 20px;
     height: 20px;
-    background-color: #009aff;
+    background-color: white;
     border: none;
     cursor: pointer;
 }
@@ -174,7 +171,7 @@ const meta = {
 .knob input[type="range"]::-webkit-slider-runnable-track {
     width: 100%;
     height: 20px;
-    background-color: var(--dark-neutral);
+    background-color: var(--neutral);
     border: none;
     border-radius: 5px;
 }
@@ -182,7 +179,7 @@ const meta = {
 .knob input[type="range"]::-moz-range-thumb {
     width: 20px;
     height: 20px;
-    background-color: #009aff;
+    background-color: white;
     border: none;
     border-radius: 50%;
     cursor: pointer;
@@ -199,7 +196,7 @@ const meta = {
 .knob input[type="range"]::-ms-thumb {
     width: 20px;
     height: 20px;
-    background-color: #009aff;
+    background-color: white;
     border: none;
     border-radius: 50%;
     cursor: pointer;
@@ -211,6 +208,10 @@ const meta = {
     background-color: var(--neutral);
     border: none;
     border-radius: 5px;
+}
+
+.knob label {
+    color: white;
 }
 
 .button {

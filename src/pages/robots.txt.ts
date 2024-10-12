@@ -1,7 +1,5 @@
 import type { APIRoute } from "astro";
 
-// Get the txt file from https://raw.githubusercontent.com/ai-robots-txt/ai.robots.txt/refs/heads/main/robots.txt
-
 const aiRobotsTxt = await fetch("https://raw.githubusercontent.com/ai-robots-txt/ai.robots.txt/refs/heads/main/robots.txt").then((res) => res.text());
 
 const getRobotsTxt = (sitemapURL: URL) => `

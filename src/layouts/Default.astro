@@ -2,7 +2,6 @@
 import { ViewTransitions } from "astro:transitions";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import MetaTags from "../components/MetaTags.astro";
-import Particles from "../components/Particles.astro";
 import NavigationBar from "../components/NavigationBar.astro";
 import "../styles/main.css";
 
@@ -18,7 +17,6 @@ const { meta } = Astro.props;
         <SpeedInsights />
     </head>
     <body>
-        <Particles />
         <NavigationBar />
         <main transition:animate="slide" class="fade-in">
             <slot />

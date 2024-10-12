@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Default from "../layouts/Default.astro";
-import vinxisWhite from "../images/vinxisWhite.png";
+import vinxisOrange from "../images/vinxisOrange.png";
 
 const meta = {
     title: "VINXIS",
@@ -12,11 +12,11 @@ const meta = {
     ogUrl: "https://vinxis.moe",
     ogSiteName: "VINXIS",
     ogLocale: "en_US",
-    ogImage: "https://vinxis.moe/vinxisOrange.png",
+    ogImage: "https://vinxis.moe/metaImage.png",
     twitterCard: "summary_large_image",
     twitterTitle: "VINXIS",
     twitterDescription: "I make music and other stuff",
-    twitterImage: "https://vinxis.moe/vinxisOrange.png",
+    twitterImage: "https://vinxis.moe/metaImage.png",
 };
 ---
 
@@ -25,7 +25,7 @@ const meta = {
         <div class="logo-container">
             <Image
                 class="logo"
-                src={vinxisWhite}
+                src={vinxisOrange}
                 alt="VINXIS Logo"
             />
             <h1 class="name">VINXIS</h1>
@@ -34,7 +34,6 @@ const meta = {
     </div>
 </Default>
 
-<!-- Styles -->
 <style>
     .main-page {
         display: flex;
