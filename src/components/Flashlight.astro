@@ -18,13 +18,29 @@
 
     // Update the mouse position
     document.addEventListener("astro:page-load", () => {
-        document.body.addEventListener("mousemove", function(event) {
-            mouseX = event.pageX;
-            mouseY = event.pageY;
-        });
-        document.body.addEventListener("click", function() {
-            gray = gray === 0 ? 255 : 0;
-        });
+        // If touchscreen, use touch events, otherwise use mouse events
+        if ("ontouchstart" in window) {
+            document.body.addEventListener("touchstart", function(event) {
+                mouseX = event.touches[0].pageX;
+                mouseY = event.touches[0].pageY;
+                gray = 255;
+            });
+            document.body.addEventListener("touchmove", function(event) {
+                mouseX = event.touches[0].pageX;
+                mouseY = event.touches[0].pageY;
+            });
+            document.body.addEventListener("touchend", function() {
+                gray = 0;
+            });
+        } else {
+            document.body.addEventListener("mousemove", function(event) {
+                mouseX = event.pageX;
+                mouseY = event.pageY;
+            });
+            document.body.addEventListener("click", function() {
+                gray = gray === 0 ? 255 : 0;
+            });
+        }
     });
 
     function draw () {
