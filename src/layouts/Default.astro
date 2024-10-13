@@ -3,6 +3,7 @@ import { ViewTransitions } from "astro:transitions";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import MetaTags from "../components/MetaTags.astro";
 import NavigationBar from "../components/NavigationBar.astro";
+import Flashlight from "../components/Flashlight.astro";
 import "../styles/main.css";
 
 const { meta } = Astro.props;
@@ -23,33 +24,7 @@ const { meta } = Astro.props;
         <main transition:animate="slide" class="fade-in">
             <slot />
         </main>
-        <div id="p5CanvasParent" transition:persist/>
-        <script is:inline>
-            function setup() {
-                const canvas = createCanvas(document.body.clientWidth, document.body.clientHeight);
-                canvas.parent("p5CanvasParent");
-                noStroke();
-                blendMode(REPLACE);
-            }
-    
-            let gray = 0;
-            function draw() {
-                resizeCanvas(document.body.clientWidth, document.body.clientHeight);
-                const diameter = 200;
-                
-                const gradientFill = drawingContext.createRadialGradient(
-                    mouseX, mouseY, 0, mouseX, mouseY, diameter
-                );
-                gradientFill.addColorStop(0, `rgba(${gray}, ${gray}, ${gray}, 1)`);
-                gradientFill.addColorStop(0.5, `rgba(${gray}, ${gray}, ${gray}, 0)`);
-                drawingContext.fillStyle = gradientFill;
-                circle(mouseX, mouseY, diameter);
-            }
-
-            function mouseClicked() {
-                gray = gray === 0 ? 255 : 0;
-            }
-        </script>
+        <Flashlight />
     </body>
 </html>
 
@@ -60,12 +35,5 @@ const { meta } = Astro.props;
       -moz-animation: fadeIn ease 1s;
       -o-animation: fadeIn ease 1s;
       -ms-animation: fadeIn ease 1s;
-  }
-
-  #p5CanvasParent {
-    position: absolute;
-    top: 0;
-    mix-blend-mode: difference;
-    pointer-events: none;
   }
 </style>

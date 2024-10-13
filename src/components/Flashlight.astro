@@ -1,0 +1,62 @@
+<canvas id="flashlight-canvas" class="flashlight" transition:persist/>
+<script>
+    // Create and append the canvas
+    const canvas = document.getElementById("flashlight-canvas")! as HTMLCanvasElement;
+    const ctx = canvas.getContext("2d")!;
+
+    const radius = 200;
+    let gray = 0;
+    let mouseX = 0;
+    let mouseY = 0;
+
+    // Resize the canvas to fill the window
+    function resizeCanvas () {
+        canvas.width = document.body.clientWidth;
+        canvas.height = document.body.clientHeight;
+    }
+    resizeCanvas();
+
+    // Update the mouse position
+    document.addEventListener("astro:page-load", () => {
+        document.body.addEventListener("mousemove", function(event) {
+            mouseX = event.pageX;
+            mouseY = event.pageY;
+        });
+        document.body.addEventListener("click", function() {
+            gray = gray === 0 ? 255 : 0;
+        });
+    });
+
+    function draw () {
+        // Resize the canvas to fill the window
+        resizeCanvas();
+
+        // Create radial gradient
+        const gradientFill = ctx.createRadialGradient(
+            mouseX, mouseY, 0, mouseX, mouseY, radius
+        );
+        gradientFill.addColorStop(0, `rgba(${gray}, ${gray}, ${gray}, 1)`);
+        gradientFill.addColorStop(0.5, `rgba(${gray}, ${gray}, ${gray}, 0)`);
+
+        // Draw the circle with gradient
+        ctx.fillStyle = gradientFill;
+        ctx.beginPath();
+        ctx.arc(mouseX, mouseY, radius, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Continue the animation loop
+        requestAnimationFrame(draw);
+    }
+
+    // Start the drawing loop
+    draw();
+</script>
+
+<style>
+    .flashlight {
+        position: absolute;
+        top: 0;
+        mix-blend-mode: difference;
+        pointer-events: none;
+    }
+</style>
