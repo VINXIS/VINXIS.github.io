@@ -1,5 +1,6 @@
 ---
 import Default from "../layouts/Default.astro";
+import NoJavascript from "../components/NoJavascript.astro";
 
 const knobs = [
     { label: "Swap Strength", value: 0.05 },
@@ -29,6 +30,7 @@ const meta = {
         <h1 class="title">
             Vinglish Translator
         </h1>
+        <NoJavascript classSelector="vinglish-page" />
         <div class="vinglish-page">
             <div class="knobs">
                 {knobs.map(knob => (

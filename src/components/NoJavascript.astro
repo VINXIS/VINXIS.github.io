@@ -1,0 +1,17 @@
+---
+const { classSelector } = Astro.props;
+
+if (!classSelector || typeof classSelector !== "string" || classSelector.length === 0 || classSelector.match(/[^a-zA-Z0-9_-]/))
+    throw new Error("NoJavascript component requires a valid classSelector prop.");
+
+const noscriptStyle = `<style type="text/css">
+  .${classSelector} * {
+    display: none;
+  }
+</style>`;
+---
+
+<noscript set:html={noscriptStyle} />
+<noscript>
+    <p>This page unfortunately requires JavaScript to function properly. Enable JavaScript and refresh the page if you'd like to use it.</p>
+</noscript>
