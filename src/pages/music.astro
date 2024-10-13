@@ -144,10 +144,20 @@ const meta = {
 }
 
 .see-more {
+    position: relative;
     cursor: pointer;
     font-weight: bold;
     width: fit-content;
+    visibility: visible;
     padding: 5px;
+    transition: visibility 0s;
+}
+
+.see-more::before {
+    content: "See Less";
+    visibility: hidden;
+    position: absolute;
+    transition: visibility 0s;
 }
 
 .see-more:hover {
@@ -157,6 +167,14 @@ const meta = {
 .usage-box-toggle:checked ~ .usage-box {
     max-height: 1000px;
     margin-bottom: 2rem;
+}
+
+.usage-box-toggle:checked ~ .see-more {
+    visibility: hidden;
+}
+
+.usage-box-toggle:checked ~ .see-more::before {
+    visibility: visible;
 }
 
 .discography-page {
