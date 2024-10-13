@@ -107,3 +107,8 @@ a {
     color: var(--primary);
     margin-bottom: 1rem;
 }
+
+.hidden {
+    color: var(--dark-neutral);
+    user-select: none;
+}

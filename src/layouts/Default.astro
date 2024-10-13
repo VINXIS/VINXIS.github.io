@@ -14,8 +14,6 @@ const { meta } = Astro.props;
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <MetaTags {...meta} />
-        <script is:inline src="/libraries/p5/p5.min.js"></script>
-        <script is:inline src="/libraries/p5/p5.sound.min.js"></script>
         <ViewTransitions />
         <SpeedInsights />
     </head>
@@ -26,6 +24,17 @@ const { meta } = Astro.props;
         </main>
         <Flashlight />
     </body>
+    <noscript>
+        <style>
+            .hidden {
+                user-select: initial;
+            }
+
+            .hidden:hover {
+                color: var(--primary);
+            }
+        </style>
+    </noscript>
 </html>
 
 <style>
