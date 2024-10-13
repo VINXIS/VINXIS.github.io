@@ -51,9 +51,10 @@ const meta = {
                     <li><strong>Direct Re-uploads:</strong> Do not directly re-upload my music without any added content.<br>If someone wants my music as is, they can visit my channel or accounts.<br>Torrent/yt-dlp/e.t.c. my music if you want (though my music is primarily free, and Bandcamp lets you download high quality versions of the audio anyway).</li>
                 </ul>
             </div>
-            <div id="usage-box-toggle">
+            <input type="checkbox" id="usage-box-toggle" class="usage-box-toggle" />
+            <label for="usage-box-toggle" class="see-more">
                 See More
-            </div>
+            </label>
             <div class="usage-box">
                 <div>
                     If you wish to give money, do so via <a href="https://vinxis.bandcamp.com/" target="_blank">Bandcamp</a> or <a href="https://paypal.me/VINXIS" target="_blank">PayPal</a>.
@@ -109,26 +110,6 @@ const meta = {
     </div>
 </Default>
 
-<script>
-    document.addEventListener("astro:page-load", () => {
-        const boxToggle = document.getElementById("usage-box-toggle")!;
-        const usageBox = document.querySelector(".usage-box")!;
-        const scrollHeight = usageBox.scrollHeight;
-
-        usageBox.setAttribute("style", `height: 0px; margin-bottom: 0px`);
-
-        boxToggle.addEventListener("click", () => {
-            if (usageBox.getAttribute("style") === `height: 0px; margin-bottom: 0px`) {
-                usageBox.setAttribute("style", `height: ${scrollHeight}px; margin-bottom: 2rem`);
-                boxToggle.textContent = "See Less";
-            } else {
-                usageBox.setAttribute("style", `height: 0px; margin-bottom: 0px`);
-                boxToggle.textContent = "See More";
-            }
-        });
-    });
-</script>
-
 <style>
 .usage-page {
     display: flex;
@@ -144,12 +125,10 @@ const meta = {
     gap: 1rem;
     width: 33%;
     justify-content: center;
+    height: fit-content;
+    max-height: 0;
+    margin-bottom: 0;
     overflow-y: clip;
-}
-
-.usage-page div:not(.usage-box) {
-    width: fit-content;
-    padding: 5px;
 }
 
 .usage-page h2 {
@@ -160,13 +139,24 @@ const meta = {
     margin: 0.5rem;
 }
 
-#usage-box-toggle {
-    cursor: pointer;
-    font-weight: bold;
+.usage-box-toggle {
+    display: none;
 }
 
-#usage-box-toggle:hover {
+.see-more {
+    cursor: pointer;
+    font-weight: bold;
+    width: fit-content;
+    padding: 5px;
+}
+
+.see-more:hover {
     color: var(--secondary)
+}
+
+.usage-box-toggle:checked ~ .usage-box {
+    max-height: 1000px;
+    margin-bottom: 2rem;
 }
 
 .discography-page {

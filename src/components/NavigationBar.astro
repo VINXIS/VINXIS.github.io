@@ -1,108 +1,58 @@
 <div transition:persist>
-    <div class="hamburger" id="hamburger">
-    &#9776;
-    </div>
-    <nav class="navbar" id="navbar">
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+    <label for="nav-toggle" class="hamburger">&#9776;</label>
+
+    <nav class="navbar">
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/music">Music</a></li>
             <li><a href="/vinglish">Vinglish</a></li>
             <li><a href="/contact">Contact</a></li>
             <li>
-                <div class="nav-item" id="corsace-header">Corsace</div>
-                <ul id="corsace-links" class="sub-list">
+                <input type="checkbox" id="corsace-toggle" class="submenu-toggle" />
+                <label for="corsace-toggle" class="nav-item">Corsace</label>
+                <ul class="sub-list">
                     <li><a href="https://corsace.io/">Website</a></li>
                     <li><a href="https://discord.gg/Z6vEMsr">Discord</a></li>
                 </ul>
             </li>
             <li>
-                <div class="nav-item" id="external-header">External Links</div>
-                <ul id="external-links" class="sub-list">
-                    <li>
-                        <a
-                            href="https://github.com/VINXIS"
-                            target="_blank"
-                        >GitHub</a>
-                    </li>
-                    <li>
-                        <a
-                            href="https://paypal.me/VINXIS"
-                            target="_blank"
-                        >PayPal</a>
-                    </li>
-                    <li>
-                        <a
-                            href="https://vinxis.bandcamp.com"
-                            target="_blank"
-                        >Bandcamp</a>
-                    </li>
-                    <li>
-                        <a
-                            href="https://soundcloud.com/vinxis"
-                            target="_blank"
-                        >Soundcloud</a>
-                    </li>
-                    <li>
-                        <a
-                            href="https://www.youtube.com/user/OYKXF"
-                            target="_blank"
-                        >Youtube</a>
-                    </li>
-                    <li>
-                        <a
-                            href="https://open.spotify.com/artist/2cNVX1qSKExpOojOx3INu8"
-                            target="_blank"
-                        >Spotify</a>
-                    </li>
-                    <li>
-                        <a
-                            href="https://itunes.apple.com/us/artist/vinxis/1342478754"
-                            target="_blank"
-                        >Apple Music</a>
-                    </li>
+                <input type="checkbox" id="external-toggle" class="submenu-toggle" />
+                <label for="external-toggle" class="nav-item">External Links</label>
+                <ul class="sub-list">
+                    <li><a href="https://github.com/VINXIS" target="_blank">GitHub</a></li>
+                    <li><a href="https://paypal.me/VINXIS" target="_blank">PayPal</a></li>
+                    <li><a href="https://vinxis.bandcamp.com" target="_blank">Bandcamp</a></li>
+                    <li><a href="https://soundcloud.com/vinxis" target="_blank">Soundcloud</a></li>
+                    <li><a href="https://www.youtube.com/user/OYKXF" target="_blank">YouTube</a></li>
+                    <li><a href="https://open.spotify.com/artist/2cNVX1qSKExpOojOx3INu8" target="_blank">Spotify</a></li>
+                    <li><a href="https://itunes.apple.com/us/artist/vinxis/1342478754" target="_blank">Apple Music</a></li>
                 </ul>
             </li>
         </ul>
     </nav>
 </div>
 
-<script>
-    let isNavbarVisible = false;
-    function toggleNavbar () {
-        isNavbarVisible = !isNavbarVisible;
-        const navbar = document.getElementById("navbar");
-        if (navbar)
-            navbar.classList.toggle("show", isNavbarVisible);
-    };
-
-    const visibleSubMenus: Record<string, boolean> = {};
-
-    const navLinks = document.querySelectorAll("#navbar a[href^=\"/\"]");
-    navLinks.forEach(link => link.addEventListener("click", toggleNavbar));
-    document.getElementById("hamburger")!.addEventListener("click", toggleNavbar);
-  
-    function toggleSubMenu (id: string) {
-        visibleSubMenus[id] = !visibleSubMenus[id];
-        const submenu = document.getElementById(id);
-        if (submenu) {
-            submenu.style.height = visibleSubMenus[id] ? `${submenu.scrollHeight}px` : "0";
-            submenu.style.marginTop = visibleSubMenus[id] ? "0.5rem" : "0";
-        }
-    }
-
-    const headers = [document.getElementById("corsace-header")!, document.getElementById("external-header")!];
-    headers.forEach(header => {
-        const linksID = header.id.replace("-header", "-links");
-        const linksIDElement = document.getElementById(linksID)!;
-        linksIDElement.style.height = "0";
-        linksIDElement.style.marginTop = "0";
-        header.addEventListener("click", () => {
-            toggleSubMenu(linksID);
-        });
-    });
-</script>
-
 <style>
+.nav-toggle,
+.submenu-toggle {
+    display: none;
+}
+
+.hamburger {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    font-size: 4rem;
+    line-height: 4rem;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.hamburger:hover {
+    color: var(--secondary);
+}
+
 .navbar {
     position: fixed;
     top: 0;
@@ -117,9 +67,10 @@
     transform: translateX(-100%);
     z-index: 9;
     padding-left: 25px;
+    transition: transform 0.3s ease;
 }
 
-.navbar.show {
+.nav-toggle:checked ~ .navbar {
     transform: translateX(0%);
 }
 
@@ -158,7 +109,8 @@
     overflow: visible;
 }
 
-.nav-item::after, .navbar ul li::after {
+.nav-item::after,
+.navbar ul li::after {
     content: "";
     position: absolute;
     bottom: -2px;
@@ -166,13 +118,16 @@
     width: 0%;
     height: 2px;
     background-color: var(--secondary);
+    transition: width 0.3s;
 }
 
-.nav-item:hover::after, .navbar ul li:hover::after {
+.nav-item:hover::after,
+.navbar ul li:hover::after {
     width: 100%;
 }
 
-.nav-item:hover, .navbar ul li:hover {
+.nav-item:hover,
+.navbar ul li:hover {
     color: var(--secondary);
 }
 
@@ -183,8 +138,17 @@
 .sub-list {
     list-style-type: none;
     margin-left: 1.5rem;
-    margin-top: 0.5rem;
+    height: fit-content;
     overflow: hidden;
+}
+
+.submenu-toggle + .nav-item + .sub-list {
+    max-height: 0;
+    margin-top: 0;
+}
+.submenu-toggle:checked + .nav-item + .sub-list {
+    max-height: 500px;
+    margin-top: 0.5rem;
 }
 
 .sub-list li {
@@ -203,20 +167,6 @@
 }
 
 .sub-list li a:hover {
-    color: var(--secondary);
-}
-
-.hamburger {
-    position: fixed;
-    top: 25px;
-    left: 25px;
-    font-size: 4rem;
-    line-height: 4rem;
-    cursor: pointer;
-    z-index: 10;
-}
-
-.hamburger:hover {
     color: var(--secondary);
 }
 </style>
