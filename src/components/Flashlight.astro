@@ -5,7 +5,9 @@
     const ctx = canvas.getContext("2d")!;
 
     const radius = 200;
+    const toggleSize = 100;
     let gray = 0;
+    let disabled = false;
     let mouseX = 0;
     let mouseY = 0;
 
@@ -18,34 +20,69 @@
 
     // Update the mouse position
     document.addEventListener("astro:page-load", () => {
+        // Add a toggle into the canvas to press for disabling the flashlight
+        document.addEventListener("click", function(event) {
+            if (event.pageX > canvas.width - toggleSize && event.pageY < toggleSize) {
+                disabled = !disabled;
+                gray = disabled ? 0 : 255;
+                mouseX = disabled ? 0 : event.pageX;
+                mouseY = disabled ? 0 : event.pageY;
+            }
+        });
+
         // If touchscreen, use touch events, otherwise use mouse events
         if ("ontouchstart" in window) {
             document.body.addEventListener("touchstart", function(event) {
+                if (disabled)
+                    return;
                 mouseX = event.touches[0]!.pageX;
                 mouseY = event.touches[0]!.pageY;
                 gray = 255;
             });
             document.body.addEventListener("touchmove", function(event) {
+                if (disabled)
+                    return;
                 mouseX = event.touches[0]!.pageX;
                 mouseY = event.touches[0]!.pageY;
             });
             document.body.addEventListener("touchend", function() {
+                if (disabled)
+                    return;
                 gray = 0;
             });
         } else {
             document.body.addEventListener("mousemove", function(event) {
+                // Change cursor to pointer if hovering over the toggle button
+                canvas.style.cursor = event.pageX > canvas.width - toggleSize && event.pageY < toggleSize ? "pointer" : "default";
+                if (disabled)
+                    return;
                 mouseX = event.pageX;
                 mouseY = event.pageY;
             });
             document.body.addEventListener("click", function() {
+                if (disabled)
+                    return;
                 gray = gray === 0 ? 255 : 0;
             });
         }
     });
 
+    function drawToggleButton () {
+        ctx.fillStyle = "#009aff";
+        ctx.fillRect(canvas.width - toggleSize, 0, toggleSize, toggleSize);
+        ctx.fillStyle = "black";
+        ctx.font = "12px Inconsolata";
+        const text = disabled ? "Disabled" : "Enabled";
+        ctx.fillText(text, canvas.width - toggleSize / 2 - ctx.measureText(text).width / 2, toggleSize / 2 - 6);
+        ctx.fillText("light", canvas.width - toggleSize / 2 - 12, toggleSize / 2 + 6);
+    }
+
     function draw () {
         // Resize the canvas to fill the window
         resizeCanvas();
+
+        // Draw the toggle button to the top right
+        drawToggleButton();
 
         // Create radial gradient
         const gradientFill = ctx.createRadialGradient(
@@ -73,6 +110,5 @@
         position: absolute;
         top: 0;
         mix-blend-mode: difference;
-        pointer-events: none;
     }
 </style>
