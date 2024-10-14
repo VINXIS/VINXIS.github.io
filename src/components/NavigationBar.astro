@@ -38,6 +38,11 @@
     navLinks.forEach(link => link.addEventListener("click", () => {
         (document.getElementById("nav-toggle")! as HTMLInputElement).checked = false;
     }));
+    document.addEventListener("click", (event) => { // Closes the navbar when clicking outside of it
+        console.log(event.target);
+        if (!(event.target as HTMLElement).closest("#navbar") && !(event.target as HTMLElement).closest(".hamburger") && !(event.target as HTMLElement).closest("#nav-toggle"))
+            (document.getElementById("nav-toggle")! as HTMLInputElement).checked = false;
+    });
 </script>
 
 <style>
