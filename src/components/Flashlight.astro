@@ -22,59 +22,56 @@
     resizeCanvas();
 
     // Update the mouse position
-    document.addEventListener("astro:page-load", () => {
-        // Add a toggle into the canvas to press for disabling the flashlight
-        document.addEventListener("click", function(event) {
-            if (event.pageX > canvas.width - toggleSize && event.pageY < toggleSize) {
-                disabled = !disabled;
-                gray = disabled ? 0 : 255;
-                mouseX = disabled ? 0 : event.pageX;
-                mouseY = disabled ? 0 : event.pageY;
-            }
+    // If touchscreen, use touch events, otherwise use mouse events
+    if ("ontouchstart" in window) {
+        document.addEventListener("touchstart", function(event) {
+            if (disabled)
+                return;
+            mouseX = event.touches[0]!.pageX;
+            mouseY = event.touches[0]!.pageY;
+            gray = 255;
         });
+        document.addEventListener("touchmove", function(event) {
+            if (disabled)
+                return;
+            mouseX = event.touches[0]!.pageX;
+            mouseY = event.touches[0]!.pageY;
+        });
+        document.addEventListener("touchend", function() {
+            if (disabled)
+                return;
+            gray = 0;
+        });
+    } else {
+        document.addEventListener("mousemove", function(event) {
+            canvas.style.cursor = event.pageX > canvas.width - toggleSize && event.pageY < toggleSize ? "pointer" : "default";
 
-        // If touchscreen, use touch events, otherwise use mouse events
-        if ("ontouchstart" in window) {
-            document.body.addEventListener("touchstart", function(event) {
-                if (disabled)
-                    return;
-                mouseX = event.touches[0]!.pageX;
-                mouseY = event.touches[0]!.pageY;
-                gray = 255;
-            });
-            document.body.addEventListener("touchmove", function(event) {
-                if (disabled)
-                    return;
-                mouseX = event.touches[0]!.pageX;
-                mouseY = event.touches[0]!.pageY;
-            });
-            document.body.addEventListener("touchend", function() {
-                if (disabled)
-                    return;
-                gray = 0;
-            });
-        } else {
-            document.body.addEventListener("mousemove", function(event) {
-                // Change cursor to pointer if hovering over the toggle button
-                canvas.style.cursor = event.pageX > canvas.width - toggleSize && event.pageY < toggleSize ? "pointer" : "default";
-                if (disabled)
-                    return;
-                mouseX = event.pageX;
-                mouseY = event.pageY;
-            });
-            document.body.addEventListener("click", function() {
-                if (disabled)
-                    return;
-                gray = gray === 0 ? 255 : 0;
-            });
-        }
-    });
+            if (disabled)
+                return;
+            mouseX = event.pageX;
+            mouseY = event.pageY;
+        });
+        document.addEventListener("click", function() {
+            if (disabled)
+                return;
+            gray = gray === 0 ? 255 : 0;
+        });
+    }
 
     function drawToggleButton () {
         const image = new Image();
         image.src = disabled ? offImg.src : onImg.src;
         ctx.drawImage(image, canvas.width - toggleSize, 0, toggleSize, toggleSize);
     }
+    // Add a toggle into the canvas to press for disabling the flashlight
+    document.addEventListener("click", function(event) {
+        if (event.pageX > canvas.width - toggleSize && event.pageY < toggleSize) {
+            disabled = !disabled;
+            gray = disabled ? 0 : 255;
+            mouseX = disabled ? 0 : event.pageX;
+            mouseY = disabled ? 0 : event.pageY;
+        }
+    });
 
     function draw () {
         // Resize the canvas to fill the window
