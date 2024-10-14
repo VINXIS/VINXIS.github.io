@@ -45,16 +45,23 @@
     } else {
         document.addEventListener("mousemove", function(event) {
             canvas.style.cursor = event.pageX > canvas.width - toggleSize && event.pageY < toggleSize ? "pointer" : "default";
+            if (canvas.style.cursor === "default") {
+                console.log(document.elementsFromPoint(event.pageX, event.pageY).filter((element) => element.id !== canvas.id));
+                const element = document.elementsFromPoint(event.pageX, event.pageY).filter((element) => element.id !== canvas.id)[0] as HTMLElement | undefined;
+                if (element)
+                    canvas.style.cursor = getComputedStyle(element).cursor;
+            }
 
             if (disabled)
                 return;
             mouseX = event.pageX;
             mouseY = event.pageY;
         });
-        document.addEventListener("click", function() {
-            if (disabled)
+        document.addEventListener("click", function(event) {
+            if (disabled || (event.target as HTMLElement).id !== canvas.id)
                 return;
             gray = gray === 0 ? 255 : 0;
+            (document.elementsFromPoint(mouseX, mouseY) as HTMLElement[]).filter((element) => element.id !== canvas.id)[0]?.click();
         });
     }
 
