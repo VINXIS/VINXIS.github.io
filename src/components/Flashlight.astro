@@ -1,11 +1,14 @@
 <canvas id="flashlight-canvas" class="flashlight" transition:persist/>
 <script>
+    import onImg from "../images/light/on.svg";
+    import offImg from "../images/light/off.svg";
+
     // Create and append the canvas
     const canvas = document.getElementById("flashlight-canvas")! as HTMLCanvasElement;
     const ctx = canvas.getContext("2d")!;
 
     const radius = 200;
-    const toggleSize = 100;
+    const toggleSize = 60;
     let gray = 0;
     let disabled = false;
     let mouseX = 0;
@@ -68,13 +71,9 @@
     });
 
     function drawToggleButton () {
-        ctx.fillStyle = "#009aff";
-        ctx.fillRect(canvas.width - toggleSize, 0, toggleSize, toggleSize);
-        ctx.fillStyle = "black";
-        ctx.font = "12px Inconsolata";
-        const text = disabled ? "Disabled" : "Enabled";
-        ctx.fillText(text, canvas.width - toggleSize / 2 - ctx.measureText(text).width / 2, toggleSize / 2 - 6);
-        ctx.fillText("light", canvas.width - toggleSize / 2 - 12, toggleSize / 2 + 6);
+        const image = new Image();
+        image.src = disabled ? offImg.src : onImg.src;
+        ctx.drawImage(image, canvas.width - toggleSize, 0, toggleSize, toggleSize);
     }
 
     function draw () {
@@ -88,11 +87,10 @@
         const gradientFill = ctx.createRadialGradient(
             mouseX, mouseY, 0, mouseX, mouseY, radius
         );
-        gradientFill.addColorStop(0, `rgba(${gray}, ${gray}, ${gray}, 1)`);
+        gradientFill.addColorStop(0, `rgba(${gray}, ${gray}, ${gray}, ${gray / 255})`);
         gradientFill.addColorStop(0.5, `rgba(${gray}, ${gray}, ${gray}, 0)`);
-
-        // Draw the circle with gradient
         ctx.fillStyle = gradientFill;
+
         ctx.beginPath();
         ctx.arc(mouseX, mouseY, radius, 0, Math.PI * 2);
         ctx.fill();
