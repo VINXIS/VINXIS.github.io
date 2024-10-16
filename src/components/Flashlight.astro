@@ -1,116 +1,100 @@
-<canvas id="flashlight-canvas" class="flashlight" transition:persist/>
+<div id="flashlight-toggle" class="flashlight-toggle" transition:persist/>
+<div id="flashlight" class="flashlight" transition:persist/>
 <script>
     import onImg from "../images/light/on.svg";
     import offImg from "../images/light/off.svg";
 
-    // Create and append the canvas
-    const canvas = document.getElementById("flashlight-canvas")! as HTMLCanvasElement;
-    const ctx = canvas.getContext("2d")!;
+    const flashlight = document.getElementById("flashlight")!;
+    const flashlightToggle = document.getElementById("flashlight-toggle")!;  
 
     const radius = 200;
-    const toggleSize = 60;
     let gray = 0;
     let disabled = false;
     let mouseX = 0;
     let mouseY = 0;
 
-    // Resize the canvas to fill the window
-    function resizeCanvas () {
-        canvas.width = document.body.clientWidth;
-        canvas.height = document.body.clientHeight;
-    }
-    resizeCanvas();
+    flashlight.style.width = `${radius}px`;
+    flashlight.style.height = `${radius}px`;
 
     // Update the mouse position
     // If touchscreen, use touch events, otherwise use mouse events
     if ("ontouchstart" in window) {
-        document.addEventListener("touchstart", function(event) {
+        document.addEventListener("touchstart", (event) => {
+            mouseX = event.touches[0]!.clientX;
+            mouseY = event.touches[0]!.clientY;
             if (disabled)
                 return;
-            mouseX = event.touches[0]!.pageX;
-            mouseY = event.touches[0]!.pageY;
             gray = 255;
         });
-        document.addEventListener("touchmove", function(event) {
-            if (disabled)
-                return;
-            mouseX = event.touches[0]!.pageX;
-            mouseY = event.touches[0]!.pageY;
+        document.addEventListener("touchmove", (event) => {
+            mouseX = event.touches[0]!.clientX;
+            mouseY = event.touches[0]!.clientY;
         });
-        document.addEventListener("touchend", function() {
+        document.addEventListener("touchend", (event) => {
+            mouseX = event.touches[0]!.clientX;
+            mouseY = event.touches[0]!.clientY;
             if (disabled)
                 return;
             gray = 0;
         });
     } else {
-        document.addEventListener("mousemove", function(event) {
-            canvas.style.cursor = event.pageX > canvas.width - toggleSize && event.pageY < toggleSize ? "pointer" : "default";
-            if (canvas.style.cursor === "default") {
-                console.log(document.elementsFromPoint(event.pageX, event.pageY).filter((element) => element.id !== canvas.id));
-                const element = document.elementsFromPoint(event.pageX, event.pageY).filter((element) => element.id !== canvas.id)[0] as HTMLElement | undefined;
-                if (element)
-                    canvas.style.cursor = getComputedStyle(element).cursor;
-            }
-
+        document.addEventListener("mousemove", (event) => {
+            mouseX = event.clientX;
+            mouseY = event.clientY;
+        });
+        document.addEventListener("click", (event) => {
+            mouseX = event.clientX;
+            mouseY = event.clientY;
             if (disabled)
                 return;
-            mouseX = event.pageX;
-            mouseY = event.pageY;
-        });
-        document.addEventListener("click", function(event) {
-            if (disabled || (event.target as HTMLElement).id !== canvas.id)
-                return;
             gray = gray === 0 ? 255 : 0;
-            (document.elementsFromPoint(mouseX, mouseY) as HTMLElement[]).filter((element) => element.id !== canvas.id)[0]?.click();
         });
     }
 
-    function drawToggleButton () {
-        const image = new Image();
-        image.src = disabled ? offImg.src : onImg.src;
-        ctx.drawImage(image, canvas.width - toggleSize, 0, toggleSize, toggleSize);
+    // Update the flashlight position
+    function updateFlashlight () {
+        flashlight.style.left = `${mouseX - radius / 2}px`;
+        flashlight.style.top = `${mouseY - radius / 2}px`;
+        flashlight.style.background = `radial-gradient(rgba(${gray}, ${gray}, ${gray}, ${gray / 255}) 0%, rgba(0, 0, 0, 0) 50%)`;
+        requestAnimationFrame(updateFlashlight);
     }
-    // Add a toggle into the canvas to press for disabling the flashlight
-    document.addEventListener("click", function(event) {
-        if (event.pageX > canvas.width - toggleSize && event.pageY < toggleSize) {
-            disabled = !disabled;
-            gray = disabled ? 0 : 255;
-            mouseX = disabled ? 0 : event.pageX;
-            mouseY = disabled ? 0 : event.pageY;
-        }
+    updateFlashlight();
+
+    // Update the flashlight toggle
+    flashlightToggle.style.background = `url(${disabled ? offImg.src : onImg.src})`;
+    flashlightToggle.addEventListener("click", () => {
+        disabled = !disabled;
+        gray = 0;
+        mouseX = disabled ? 0 : mouseX;
+        mouseY = disabled ? 0 : mouseY;
+        flashlightToggle.style.background = `url(${disabled ? offImg.src : onImg.src})`;
     });
-
-    function draw () {
-        // Resize the canvas to fill the window
-        resizeCanvas();
-
-        // Draw the toggle button to the top right
-        drawToggleButton();
-
-        // Create radial gradient
-        const gradientFill = ctx.createRadialGradient(
-            mouseX, mouseY, 0, mouseX, mouseY, radius
-        );
-        gradientFill.addColorStop(0, `rgba(${gray}, ${gray}, ${gray}, ${gray / 255})`);
-        gradientFill.addColorStop(0.5, `rgba(${gray}, ${gray}, ${gray}, 0)`);
-        ctx.fillStyle = gradientFill;
-
-        ctx.beginPath();
-        ctx.arc(mouseX, mouseY, radius, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Continue the animation loop
-        requestAnimationFrame(draw);
-    }
-
-    // Start the drawing loop
-    draw();
 </script>
-
+<noscript>
+    <style>
+        .flashlight, .flashlight-toggle {
+            display: none;
+        }
+    </style>
+</noscript>
 <style>
     .flashlight {
-        position: absolute;
-        top: 0;
+        position: fixed;
+        border-radius: 50%;
         mix-blend-mode: difference;
+        transition: none;
+        pointer-events: none;
+    }
+
+    .flashlight-toggle {
+        --toggle-size: 60px;
+
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: var(--toggle-size);
+        height: var(--toggle-size);
+        background-size: cover;
+        cursor: pointer;
     }
 </style>

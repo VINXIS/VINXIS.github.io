@@ -22,7 +22,6 @@ const { meta } = Astro.props;
         <main transition:animate="slide" class="fade-in">
             <slot />
         </main>
-        <Flashlight />
     </body>
     <noscript>
         <style>
@@ -35,6 +34,7 @@ const { meta } = Astro.props;
             }
         </style>
     </noscript>
+    <Flashlight />
 </html>
 
 <style>
