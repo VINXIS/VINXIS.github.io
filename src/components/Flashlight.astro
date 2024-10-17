@@ -56,7 +56,7 @@
     function updateFlashlight () {
         flashlight.style.left = `${mouseX - radius / 2}px`;
         flashlight.style.top = `${mouseY - radius / 2}px`;
-        flashlight.style.background = `radial-gradient(rgba(${gray}, ${gray}, ${gray}, ${gray / 255}) 0%, rgba(0, 0, 0, 0) 50%)`;
+        flashlight.style.opacity = `${gray / 255}`;
         requestAnimationFrame(updateFlashlight);
     }
     updateFlashlight();
@@ -81,7 +81,8 @@
         position: fixed;
         border-radius: 50%;
         mix-blend-mode: difference;
-        transition: none;
+        transition: opacity 0.25s ease;
+        background: radial-gradient(rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 0) 50%);
         pointer-events: none;
     }
 
