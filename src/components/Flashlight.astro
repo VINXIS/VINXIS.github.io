@@ -1,5 +1,6 @@
 <div id="flashlight-toggle" class="flashlight-toggle" transition:persist/>
 <div id="flashlight" class="flashlight" transition:persist/>
+<div class="hidden flashlight-text">Click icon to enable/disable flashlight toggle</div>
 <script>
     import onImg from "../images/light/on.svg";
     import offImg from "../images/light/off.svg";
@@ -86,9 +87,11 @@
         pointer-events: none;
     }
 
-    .flashlight-toggle {
+    .flashlight-toggle, .flashlight-text {
         --toggle-size: 60px;
+    }
 
+    .flashlight-toggle {
         position: fixed;
         top: 0;
         right: 0;
@@ -96,5 +99,11 @@
         height: var(--toggle-size);
         background-size: cover;
         cursor: pointer;
+    }
+
+    .flashlight-text {
+        left: initial;
+        top: calc(var(--toggle-size) / 2);
+        right: var(--toggle-size);
     }
 </style>

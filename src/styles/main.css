@@ -5,20 +5,6 @@
     --analogous2: #ff3100;
     --neutral: #7c7c7c;
     --dark-neutral: #333333;
-
-    --font-size: 0.833333333vw;
-}
-
-@media screen and (max-width: 768px) {
-    :root {
-        --font-size: 1vw
-    }
-}
-
-@media screen and (max-width: 480px) {
-    :root {
-        --font-size: 2vw
-    }
 }
 
 /* vietnamese */
@@ -78,10 +64,6 @@
     transition: all 0.25s ease;
 }
 
-html {
-    font-size: var(--font-size);
-}
-
 body {
     font-family: "Inconsolata", sans-serif;
     background-color: var(--dark-neutral);
@@ -109,6 +91,25 @@ a {
 }
 
 .hidden {
-    color: var(--dark-neutral);
+    color: transparent;
     user-select: none;
+    position: fixed;
+    top: 5px;
+    left: 5px;
+}
+
+.hidden * {
+    color: transparent;
+}
+
+.hidden:hover {
+    color: var(--dark-neutral); 
+}
+
+.hidden:hover * {
+    color: var(--dark-neutral);
+}
+
+.hidden:hover a {
+    text-decoration: dashed underline;
 }
