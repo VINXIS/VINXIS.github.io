@@ -66,8 +66,6 @@
     flashlightToggle.addEventListener("click", () => {
         disabled = !disabled;
         gray = 0;
-        mouseX = disabled ? 0 : mouseX;
-        mouseY = disabled ? 0 : mouseY;
         flashlightToggle.style.background = `url(${disabled ? offImg.src : onImg.src})`;
     });
 </script>
