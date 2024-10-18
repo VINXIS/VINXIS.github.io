@@ -74,7 +74,13 @@ body {
 
 a {
     text-decoration: none;
+    text-decoration-color: transparent;
     color: var(--secondary);
+}
+
+a:hover {
+    text-decoration: underline;
+    text-decoration-color: initial;
 }
 
 .no-scrollbar {
