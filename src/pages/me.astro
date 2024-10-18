@@ -43,7 +43,7 @@ const age = (Math.round(multiplier * ((Date.now() - birthDate) / 31557600000 - 2
             <div draggable="true" class="draggable">
                 <h3>Intro</h3>
                 <br>
-                <p>Forced into the world ~<span id="age">{age}</span> years ago... specifically at <a title="Scarborough General Hospital, ON, Canada" href="https://maps.app.goo.gl/j3CMCsSDan86tAJs8" target="_blank">purgatory</a>, but lived most of my life in <a title="Edmonton, AB, Canada" href="https://maps.app.goo.gl/q8eJUVKMXBxnYDqP7" target="_blank">hell</a> since December 2004</p>
+                <p>Forced into the world around <span id="age">{age}</span> years ago at <a title="Scarborough General Hospital, ON, Canada" href="https://maps.app.goo.gl/j3CMCsSDan86tAJs8" target="_blank">purgatory</a>, but lived most of my life in <a title="Edmonton, AB, Canada" href="https://maps.app.goo.gl/q8eJUVKMXBxnYDqP7" target="_blank">hell</a> since December 2004</p>
                 <br>
                 <p>Mostly known on the internet for doing bullshit in the social-rhythm game <a title="osu!'s website" href="https://osu.ppy.sh/u/vinxis" target="_blank">osu!</a> from 2014-2022, and making music (which I still do), but now I'm mainly just online and with friends while looking for a job/contemplating going back to university, all while doing stuff on <a title="Corsace's website" href="https://corsace.io" target="_blank">Corsace</a> and thinking about how to get out of <a title="Edmonton, AB, Canada" href="https://maps.app.goo.gl/q8eJUVKMXBxnYDqP7" target="_blank">hell</a><br><span class="small-text">(hire me please!!!! Resumes are below, and more info about me is everywhere on this site!)</span></p>
                 <br>
@@ -79,17 +79,17 @@ const age = (Math.round(multiplier * ((Date.now() - birthDate) / 31557600000 - 2
             </div>
             <div draggable="true" class="draggable">
                 <h3>Things I like</h3>
-                <span class="small-text"><span class="bold">Obv. non-exhaustive,</span> only top 3-5 or so things cuz a lot of sections</span>
                 <br>
+                <span class="small-text"><span class="bold">Obv. non-exhaustive,</span> only top 3-5 or so things cuz a lot of sections</span>
                 <br>
                 <p><span class="bold">Music:</span> Kendrick Lamar, Porter Robinson/Virtual Self, Pink Floyd, Burial</p>
                 <p><span class="bold">Games:</span> Donkey Kong Country (DKC) + DKC2, Celeste, Super Mario World, Rain World + Downpour <span class="small-text">(but also not really that goated... it's complicated)</span></p>
                 <p><span class="bold">Anime/Manga:</span> Made in Abyss, SayoAsa/Maquia, 3-gatsu no Lion, Hunter X Hunter, Monogatari</p>
                 <p><span class="bold">Art:</span> ka92, Yoneyama Mai, loundraw, あすてろid</p>
-                <p><span class="bold">Food:</span> Garlic, Vanilla</p>
-                <p><span class="bold">Food (actual dishes):</span> Toum, Chicken Korma + Rice, Vanilla Syrup Latte</p>
+                <p><span class="bold">Ingredients:</span> Garlic, Vanilla, Soy Sauce, MSG</p>
+                <p><span class="bold">Food:</span> Toum, Chicken Korma + Rice, Vanilla Syrup Latte</p>
                 <br>
-                <p><span class="bold">Uncategorized Topics:</span>Soap Making, Sewing, Gardening, YouTube/Video Essays, Long Form Posts/Essay Blogs, Programming <span class="small-text">(excl. web dev even though that's all I do),</span> Drugs, Cell Biology, Genetics, Foundational Materials Engineering, Biomaterials, Pharmacokinetics + Pharmacodynamics, Solarpunk, Degrowth, Slow Ageing</p>
+                <p><span class="bold">Uncategorized Topics:</span> Soap Making, Sewing, Gardening, YouTube/Video Essays, Long Form Posts/Essay Blogs, Programming <span class="small-text">(excl. web dev even though that's all I do),</span> Drugs, Cell Biology, Genetics, Foundational Materials Engineering, Biomaterials, Pharmacokinetics + Pharmacodynamics, Solarpunk, Degrowth, Slow Ageing</p>
             </div>
             <div draggable="true" class="draggable">
                 <h3>Last.fm Recently Played</h3>
@@ -199,7 +199,6 @@ document.addEventListener("astro:page-load", () => {
         requestAnimationFrame(updateAge);
     }
     updateAge();
-
     
     // If the user presses vnxs, it changes all the text into a
     let pressedKeys = new Set<string>();
@@ -237,14 +236,19 @@ document.addEventListener("astro:page-load", () => {
             pressedKeys.clear();
         }
     });
+
     document.addEventListener("keyup", (event) => {
         pressedKeys.delete(event.key);
     });
 
+    if ("ontouchstart" in window) {
+        document.querySelector(".draggable-info")!.textContent = "The sections below are draggable when you're not on a touch device!";
+        return;
+    }    
+
     // Lots of code derived from https://stackoverflow.com/questions/74335612/drag-and-drop-when-using-flex-wrap cuz they are a genius and i cba deriving the algo myself
     const container = document.getElementById("drag-container")!;
     const children = document.querySelectorAll(".draggable");
-    console.log(children);
     let draggedItem: HTMLElement | null = null;
 
     children.forEach(draggableElement => {
@@ -264,36 +268,36 @@ document.addEventListener("astro:page-load", () => {
     container.addEventListener("dragover", (e) => {
         e.preventDefault();
         const draggableElements = [...container.querySelectorAll(".draggable:not(.dragging)")];
-        const closestElement = draggableElements.reduce((closest, child, index) => {
+        let closestOffset = Number.NEGATIVE_INFINITY;
+        let closestElement: Element | null = null;
+        draggableElements.forEach((child, index) => {
             const box = child.getBoundingClientRect();
 
             // check if this is in the same row
             const inRow = e.clientY - box.bottom <= 0 && e.clientY - box.top >= 0;
             if (!inRow)
-                return closest;
+                return;
 
-            const offset = e.clientX - (box.left + box.width / 2);
-            if (offset < 0 && offset > closest.offset)
-                return {
-                    offset: offset,
-                    element: child,
-                };
+            // check if this is the closest element
+            const offset = e.clientX - (box.left + box.width);
+            if (offset < 0 && offset > closestOffset) {
+                closestOffset = offset;
+                closestElement = child;
+                return;
+            }
             
             // handle row ends
-            const nextBox = draggableElements[index + 1] ? draggableElements[index + 1]!.getBoundingClientRect() : undefined;
+            const nextBox = draggableElements[index + 1]?.getBoundingClientRect() ?? undefined;
             if (
                 nextBox && // there is a box after this one. 
                 e.clientY - nextBox.top <= 0 && // the next is in a new row
-                closest.offset === Number.NEGATIVE_INFINITY // we didn't find a fit in the current row.
+                closestOffset === Number.NEGATIVE_INFINITY // we didn't find a fit in the current row.
             ) {
-                return {
-                    offset: 0,
-                    element: draggableElements[index + 1] ?? null,
-                };
+                closestOffset = 0;
+                closestElement = draggableElements[index + 1] ?? null;
             }
+        });
 
-            return closest;
-        }, { offset: Number.NEGATIVE_INFINITY, element: null } as { offset: number, element: Element | null }).element;
         if (closestElement)
             container.insertBefore(draggedItem!, closestElement);
         else
