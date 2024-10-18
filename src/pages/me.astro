@@ -22,6 +22,8 @@ const meta = {
     twitterImage: "https://vinxis.moe/metaImage.png",
 };
 
+const currentlyLastUpdated = new Date(1729234020000);
+
 // For js disabled users
 const birthDate = 909814500000;
 const precision = 20;
@@ -55,7 +57,14 @@ const age = (Math.round(multiplier * ((Date.now() - birthDate) / 31557600000 - 2
             </div>
             <div draggable="true" class="draggable">
                 <h3>Currently...</h3>
-                <span class="small-text">Last updated: 2024-10-18</span>
+                <span class="small-text">Last updated: {new Intl.DateTimeFormat("en-GB", {
+                    year: "numeric",
+                    month: "short",
+                    day: "2-digit",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    hour12: false,
+                }).format(currentlyLastUpdated).replace(",", "")} in your timezone</span>
                 <br>
                 <br>
                 <div>
@@ -92,7 +101,7 @@ const age = (Math.round(multiplier * ((Date.now() - birthDate) / 31557600000 - 2
                 <p><span class="bold">Uncategorized Topics:</span> Soap Making, Sewing, Gardening, YouTube/Video Essays, Long Form Posts/Essay Blogs, Programming <span class="small-text">(excl. web dev even though that's all I do),</span> Drugs, Cell Biology, Genetics, Foundational Materials Engineering, Biomaterials, Pharmacokinetics + Pharmacodynamics, Solarpunk, Degrowth, Slow Ageing</p>
             </div>
             <div draggable="true" class="draggable">
-                <h3>Last.fm Recently Played</h3>
+                <h3>Last.fm</h3>
                 <a href="https://www.last.fm/user/VINXIS" target="_blank" title="last.fm">
                     <Image
                         src="https://lastfm-recently-played.vercel.app/api?user=VINXIS&bg_color=333333&header_style=none&width=500"
