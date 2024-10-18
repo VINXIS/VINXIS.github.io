@@ -279,7 +279,7 @@ document.addEventListener("astro:page-load", () => {
                 return;
 
             // check if this is the closest element
-            const offset = e.clientX - (box.left + box.width);
+            const offset = e.clientX - (box.left + box.width / 2);
             if (offset < 0 && offset > closestOffset) {
                 closestOffset = offset;
                 closestElement = child;
