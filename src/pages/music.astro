@@ -151,16 +151,13 @@ const meta = {
     cursor: pointer;
     font-weight: bold;
     width: fit-content;
-    visibility: visible;
     padding: 5px;
-    transition: all 0.25s ease, visibility 0s;
 }
 
 .see-more::before {
     content: "See Less";
-    visibility: hidden;
+    color: transparent;
     position: absolute;
-    transition: visibility 0s;
 }
 
 .see-more:hover {
@@ -173,11 +170,15 @@ const meta = {
 }
 
 .usage-box-toggle:checked ~ .see-more {
-    visibility: hidden;
+    color: transparent;
 }
 
 .usage-box-toggle:checked ~ .see-more::before {
-    visibility: visible;
+    color: var(--primary);
+}
+
+.usage-box-toggle:checked ~ .see-more:hover::before {
+    color: var(--secondary);
 }
 
 .discography-page {

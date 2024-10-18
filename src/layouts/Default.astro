@@ -58,6 +58,10 @@ const { meta } = Astro.props as { meta: MetaProps };
             .hidden:hover {
                 color: var(--primary);
             }
+
+            .hidden:hover * {
+                color: var(--primary);
+            }
         </style>
     </noscript>
     <Flashlight />
