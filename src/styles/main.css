@@ -69,6 +69,7 @@ body {
     background-color: var(--dark-neutral);
     color: var(--primary);
     margin: 0;
+    transition: all 0.25s ease, background-color 0s, color 0s;
 }
 
 a {
@@ -93,7 +94,7 @@ a {
 .hidden {
     color: transparent;
     user-select: none;
-    position: fixed;
+    position: absolute;
     top: 4.5rem;
     left: 5px;
 }
@@ -112,4 +113,18 @@ a {
 
 .hidden:hover a {
     text-decoration: dashed underline;
+}
+
+.small-text {
+    font-size: 0.75rem;
+    color: var(--analogous1);
+}
+
+.bold {
+    font-weight: bold;
+    color: var(--analogous2);
+}
+
+.strike {
+    text-decoration: line-through;
 }
