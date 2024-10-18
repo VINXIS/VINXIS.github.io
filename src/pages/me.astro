@@ -1,0 +1,349 @@
+---
+import { Image } from "astro:assets";
+import Default from "../layouts/Default.astro";
+import vinxisOrange from "../images/vinxisOrange.png";
+
+const email = "oykxf2@gmail.com";
+const corsaceEmail = "contact@corsace.io";
+
+const meta = {
+    title: "Me, Currently, Contact",
+    ogTitle: "Me, Currently, Contact",
+    description: "Information about me, what I'm doing, and how to contact me",
+    ogDescription: "Information about me, what I'm doing, and how to contact me",
+    ogType: "website",
+    ogUrl: "https://vinxis.moe",
+    ogSiteName: "VINXIS",
+    ogLocale: "en_US",
+    ogImage: "https://vinxis.moe/metaImage.png",
+    twitterCard: "summary_large_image",
+    twitterTitle: "Me, Currently, Contact",
+    twitterDescription: "Information about me, what I'm doing, and how to contact me",
+    twitterImage: "https://vinxis.moe/metaImage.png",
+};
+
+// For js disabled users
+const birthDate = 909814500000;
+const precision = 20;
+const multiplier = 10 ** precision;
+const age = (Math.round(multiplier * ((Date.now() - birthDate) / 31557600000 - 2 / 1461)) / multiplier).toFixed(precision);
+---
+
+<Default meta={meta}>
+    <div class="page">
+        <h1 class="about-header">
+            <Image
+                class="about-logo"
+                src={vinxisOrange}
+                alt="VINXIS Logo"
+            />
+            <span class="about-name" id="name">Omar Kamal</span>
+        </h1>
+        <div class="about-sections" id="drag-container">
+            <div draggable="true" class="draggable">
+                <h3>Intro</h3>
+                <br>
+                <p>Forced into the world ~<span id="age">{age}</span> years ago... specifically at <a title="Scarborough General Hospital, ON, Canada" href="https://maps.app.goo.gl/j3CMCsSDan86tAJs8" target="_blank">purgatory</a>, but lived most of my life in <a title="Edmonton, AB, Canada" href="https://maps.app.goo.gl/q8eJUVKMXBxnYDqP7" target="_blank">hell</a> since December 2004</p>
+                <br>
+                <p>Mostly known on the internet for doing bullshit in the social-rhythm game <a title="osu!'s website" href="https://osu.ppy.sh/u/vinxis" target="_blank">osu!</a> from 2014-2022, and making music (which I still do), but now I'm mainly just online and with friends while looking for a job/contemplating going back to university, all while doing stuff on <a title="Corsace's website" href="https://corsace.io" target="_blank">Corsace</a> and thinking about how to get out of <a title="Edmonton, AB, Canada" href="https://maps.app.goo.gl/q8eJUVKMXBxnYDqP7" target="_blank">hell</a><br><span class="small-text">(hire me please!!!! Resumes are below, and more info about me is everywhere on this site!)</span></p>
+                <br>
+                <p>Graduated w. <span class="bold">BSc. Materials Engineering</span> and academically very interested in the crossroad of biomaterials and cell biology/genetics, but my grasp on Comp. Sci. is Unfortunately much more developed than anything else</p>
+                <br>
+                <p>Not on any <a title="Wikipedia link" href="https://wikipedia.org/wiki/Microblogging">microblogging</a>/<a title="Wikipedia link" href="https://wikipedia.org/wiki/Social_networking_service">social network</a> sites anymore since cohost died; anywhere else I am is listed below</p>
+                <br>
+                <p class="small-text">Site built with <a href="https://astro.build/" target="_blank" title="Astro's website">Astro</a> for optimized and minimal size =)</p>
+            </div>
+            <div draggable="true" class="draggable">
+                <h3>Currently...</h3>
+                <span class="small-text">Last updated: 2024-10-18</span>
+                <br>
+                <br>
+                <div>
+                    <h4>Short Term:</h4>
+                    <p>- Trying to finish setting up this site for myself</p>
+                    <p>- Attempting to release music this month for once</p>
+                    <p>- Attempt to make actually good seitan</p>
+                    <p>- Working on (and unlikely finish) a music project I started last month</p>
+                    <p>- Attempting soap-making</p>
+                    <p>- Continue applying to jobs and graduate programs</p>
+                </div>
+                <br>
+                <div>
+                    <h4>Long Term:</h4>
+                    <p class="bold">- Get out of <a title="Edmonton, AB, Canada" href="https://maps.app.goo.gl/q8eJUVKMXBxnYDqP7" target="_blank" class="bold">hell</a> <span class="small-text">(ideally to Amsterdam/Switzerland/Japan)</span></p>
+                    <p>- Start sewing my own clothes</p>
+                    <p>- Start drawing for the last point</p>
+                    <p>- Work on a timeline maker site/program I've been thinking about</p>
+                    <p>- Start working on the thing that's been rotting my brain since 2020</p>
+                </div>
+            </div>
+            <div draggable="true" class="draggable">
+                <h3>Things I like</h3>
+                <span class="small-text"><span class="bold">Obv. non-exhaustive,</span> only top 3-5 or so things cuz a lot of sections</span>
+                <br>
+                <br>
+                <p><span class="bold">Music:</span> Kendrick Lamar, Porter Robinson/Virtual Self, Pink Floyd, Burial</p>
+                <p><span class="bold">Games:</span> Donkey Kong Country (DKC) + DKC2, Celeste, Super Mario World, Rain World + Downpour <span class="small-text">(but also not really that goated... it's complicated)</span></p>
+                <p><span class="bold">Anime/Manga:</span> Made in Abyss, SayoAsa/Maquia, 3-gatsu no Lion, Hunter X Hunter, Monogatari</p>
+                <p><span class="bold">Art:</span> ka92, Yoneyama Mai, loundraw, あすてろid</p>
+                <p><span class="bold">Food:</span> Garlic, Vanilla</p>
+                <p><span class="bold">Food (actual dishes):</span> Toum, Chicken Korma + Rice, Vanilla Syrup Latte</p>
+                <br>
+                <p><span class="bold">Uncategorized Topics:</span>Soap Making, Sewing, Gardening, YouTube/Video Essays, Long Form Posts/Essay Blogs, Programming <span class="small-text">(excl. web dev even though that's all I do),</span> Drugs, Cell Biology, Genetics, Foundational Materials Engineering, Biomaterials, Pharmacokinetics + Pharmacodynamics, Solarpunk, Degrowth, Slow Ageing</p>
+            </div>
+            <div draggable="true" class="draggable">
+                <h3>Last.fm Recently Played</h3>
+                <a href="https://www.last.fm/user/VINXIS" target="_blank" title="last.fm">
+                    <Image
+                        src="https://lastfm-recently-played.vercel.app/api?user=VINXIS&bg_color=333333&header_style=none&width=500"
+                        alt="Recently Played"
+                        inferSize
+                        style="width: 100%;"
+                    />
+                </a>
+            </div>
+            <div draggable="true" class="draggable">
+                <h3>Site Design Choice</h3>
+                <br>
+                <p>Minimalism definitely has many issues: a perverted desire of sterility, the impression of no individuality or personality, unclear communication for the sake of less, less is not necessarily more, cult-ish conformity</p>
+                <br>
+                <p>But my reasons for embracing the aesthetics of visual minimalism are pretty simple: My brain eats away my consciousness 24/7, the internet gets so suffocating, the city I live in is insufferable, and the constant combardment everywhere all the time internally and exernally creates a craving for visual emptiness to provide a space to "breathe"... but not in a claustrophobic sense!</p>
+                <br>
+                <p>I also believe that minimalism can avoid all of the faults it has without complete rejection and a direction towards maximalism. Achieving clarity in concision is one of the most admirable things to me, as well as the ability to provide MUCH MORE than what initially meets the eye.</p>
+                <br>
+                <p>Not to say maximalism cannot do what minimalism strives for, but they are not in its priorities... the tool of minimalism has them on sight.</p>
+            </div>
+            <div draggable="true" class="draggable">
+                <h3>Links/Contact</h3>
+                <br>
+                <div style="display:flex; justify-content:space-between;">
+                    <div>
+                        <h4>Direct Contact Methods</h4>
+                        Email: <a href={`mailto:${email}`} target="_blank">{email}</a>
+                        <br>
+                        Discord: <a href="https://discord.com/users/352605625869402123" target="_blank">corsace.io</a>
+                        <br>
+                        <br>
+                        <h4>Resumes/CVs</h4>
+                        <a href="/resumes/dev.pdf" target="_blank">Resume (Software Development)</a>
+                        <br>
+                        <a href="/resumes/mate.pdf" target="_blank">Resume (Materials Engineering)</a>
+                        <br>
+                        <br>
+                        <h4>Corsace Contact</h4>
+                        Email: <a href={`mailto:${corsaceEmail}`} target="_blank">{corsaceEmail}</a>
+                        <br>
+                        Discord: <a href="https://discord.gg/Z6vEMsr" target="_blank">https://discord.gg/Z6vEMsr</a>
+                        <br>
+                    </div>
+                    <div>
+                        <h4>Music Links</h4>
+                        <a href="https://vinxis.bandcamp.com" target="_blank">Bandcamp</a>
+                        <br>
+                        <a href="https://soundcloud.com/vinxis" target="_blank">Soundcloud</a>
+                        <br>
+                        <a href="https://www.youtube.com/user/OYKXF" target="_blank">Youtube</a>
+                        <br>
+                        <a href="https://open.spotify.com/artist/2cNVX1qSKExpOojOx3INu8" target="_blank">Spotify</a>
+                        <br>
+                        <a href="https://itunes.apple.com/us/artist/vinxis/1342478754" target="_blank">Apple Music</a>
+                        <br>
+                        <br>
+                        <h4>Other Links</h4>
+                        <a href="https://vinxis.moe" target="_blank">Website</a>
+                        <br>
+                        <a href="https://neocities.org/site/vinxis" target="_blank">Neocities</a>
+                        <br>
+                        <a href="https://github.com/VINXIS" target="_blank">GitHub</a>
+                        <br>
+                        <a href="https://linkedin.com/in/vinxis" target="_blank">LinkedIn</a>
+                        <br>
+                        <a href="https://paypal.me/VINXIS" target="_blank">PayPal</a>
+                        <br>
+                        <a href="https://last.fm/user/VINXIS" target="_blank">Last.fm</a>
+                        <br>
+                        <a href="https://twitch.tv/vinxis1" target="_blank">Twitch</a>
+                        <br>
+                        <a href="https://steamcommunity.com/id/vinxis" target="_blank">Steam</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <span slot="hidden" class="hidden">idgaf/any</span>
+    <span slot="hidden" class="hidden draggable-info" style="top:8rem; left:2rem; padding:3rem;">The sections below are draggable!</span>
+    <noscript>
+        <style>
+            .draggable-info {
+                display: none;
+            }
+        </style>
+        <span slot="hidden" class="hidden" style="top:8rem; left:2rem; padding:3rem;">The sections below are draggable when javascript is enabled!</span>
+    </noscript>
+    <span slot="hidden" class="hidden" style="top:initial; left:initial; bottom:0; position:fixed;"><a href="https://youtu.be/_twR_GdoVfk" target="_blank">skibidi toilet ended my 5 five year long relationship So to give a little background info, I love watching youtube shorts, I binge watch them. On average, I spend about 8 hours daily watching shorts, it's my guilty pleasure. No one knows about this, as I keep it a good secret. One day, when I was meant to be at school, I was watching some shorts. My mum came in and was shocked. So she didn't see what I was doing, I hid my phone under my pillow and told her to leave because I was having a wank. I got away with it, but the same day, I was around my GF's house, and we were watching a movie. I was watching shorts the whole time, and I was so sneaky, she didn't notice. She was trying to make advances on me and she put her hand on my thigh. I didn't think much of it and kept scrolling. She noticed that I was watching youtube shorts when I was watching ''skibidi toilet 58 (fanmade)'' and suddenly my phone's volume went up to the maximum out of nowhere (the volume button on my phone has been broken for like a month now.). She immediately took her hand off of my thigh and screamed ''ARE YOU WATCHING FUCKING SKIBIDI TOILET?!'' and, I'll spare you the details, but I'm currently sitting on her porch, bawling my fucking eyes out. I'm not sure if I'll ever recover from this, but atleast I have youtube shorts.</a></span>
+    <span slot="hidden" class="hidden" style="top:5rem; left:50%; transform:translateX(-50%);">Quite jealous of people who find any form of solace with pseudoscientific identifiers, birthdays, characters, astrology, etc...</span>
+</Default>
+
+<script>
+document.addEventListener("astro:page-load", () => {
+    const birthDate = 909814500000;
+    const precision = 20;
+    const multiplier = 10 ** precision;
+    const ageSpan = document.getElementById("age")!;
+    let disabled = false;
+
+    function updateAge () {
+        if (disabled)
+            return;
+        ageSpan.innerText = (Math.round(multiplier * ((Date.now() - birthDate) / 31557600000 - 2 / 1461)) / multiplier).toFixed(precision);
+        requestAnimationFrame(updateAge);
+    }
+    updateAge();
+
+    
+    // If the user presses vnxs, it changes all the text into a
+    let pressedKeys = new Set<string>();
+    document.addEventListener("keydown", (event) => {
+        if (pressedKeys.has(event.key))
+            return;
+        if (event.key === "CapsLock")
+            pressedKeys = new Set<string>();
+        if (pressedKeys.has(event.key.toUpperCase()) || pressedKeys.has(event.key.toLowerCase())) {
+            pressedKeys.delete(event.key.toUpperCase());
+            pressedKeys.delete(event.key.toLowerCase());
+        }
+        pressedKeys.add(event.key);
+
+        // Check if pressedKeys is only "vnxs"
+        if (
+            (pressedKeys.has("v") || pressedKeys.has("V")) &&
+            (pressedKeys.has("n") || pressedKeys.has("N")) &&
+            (pressedKeys.has("x") || pressedKeys.has("X")) &&
+            (pressedKeys.has("s") || pressedKeys.has("S"))
+        ) {
+            disabled = true;
+
+            // Replace all text with VINXIS
+            const container = document.getElementById("drag-container")!;
+            const replaceTextInNode = (node: Node) => {
+                if (node.nodeType === Node.TEXT_NODE && node.textContent?.trim()) {
+                    console.log(node.textContent);
+                    node.textContent = node.textContent.replace(/(\p{L}|\d+)+/gu, "VINXIS");
+                } else if (node.hasChildNodes())
+                    node.childNodes.forEach(child => replaceTextInNode(child));
+            };
+            container.childNodes.forEach(child => replaceTextInNode(child));
+            document.getElementById("name")!.textContent = "Omar KamaI";
+            pressedKeys.clear();
+        }
+    });
+    document.addEventListener("keyup", (event) => {
+        pressedKeys.delete(event.key);
+    });
+
+    // Lots of code derived from https://stackoverflow.com/questions/74335612/drag-and-drop-when-using-flex-wrap cuz they are a genius and i cba deriving the algo myself
+    const container = document.getElementById("drag-container")!;
+    const children = document.querySelectorAll(".draggable");
+    console.log(children);
+    let draggedItem: HTMLElement | null = null;
+
+    children.forEach(draggableElement => {
+        (draggableElement as HTMLElement).addEventListener("dragstart", (e) => {
+            if (!e.target || !(e.target as HTMLElement).classList.contains("draggable"))
+                return;
+            draggedItem = e.target as HTMLElement;
+            draggedItem.classList.add("dragging");
+        });
+
+        (draggableElement as HTMLElement).addEventListener("dragend", () => {
+            draggedItem?.classList.remove("dragging");
+            draggedItem = null;
+        });
+    });
+
+    container.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        const draggableElements = [...container.querySelectorAll(".draggable:not(.dragging)")];
+        const closestElement = draggableElements.reduce((closest, child, index) => {
+            const box = child.getBoundingClientRect();
+
+            // check if this is in the same row
+            const inRow = e.clientY - box.bottom <= 0 && e.clientY - box.top >= 0;
+            if (!inRow)
+                return closest;
+
+            const offset = e.clientX - (box.left + box.width / 2);
+            if (offset < 0 && offset > closest.offset)
+                return {
+                    offset: offset,
+                    element: child,
+                };
+            
+            // handle row ends
+            const nextBox = draggableElements[index + 1] ? draggableElements[index + 1]!.getBoundingClientRect() : undefined;
+            if (
+                nextBox && // there is a box after this one. 
+                e.clientY - nextBox.top <= 0 && // the next is in a new row
+                closest.offset === Number.NEGATIVE_INFINITY // we didn't find a fit in the current row.
+            ) {
+                return {
+                    offset: 0,
+                    element: draggableElements[index + 1] ?? null,
+                };
+            }
+
+            return closest;
+        }, { offset: Number.NEGATIVE_INFINITY, element: null } as { offset: number, element: Element | null }).element;
+        if (closestElement)
+            container.insertBefore(draggedItem!, closestElement);
+        else
+            container.appendChild(draggedItem!);
+    });
+});
+</script>
+
+<style>
+.about-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-logo {
+    height: 4rem;
+    width: auto;
+    aspect-ratio: 1/1;
+}
+
+.about-name {
+    position: relative;
+}
+
+.about-name::before {
+    content: "VINXIS";
+    color: transparent;
+    position: absolute;
+}
+
+.about-header:hover .about-name {
+    color: transparent;
+}
+
+.about-header:hover .about-name::before {
+    color: var(--primary);
+}
+
+.about-sections {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.draggable {
+    flex: 0 0 calc((100% - 20px * 2 - 2px * 3) / 3 );
+    /* border: 1px solid var(--primary); */
+    border-radius: 20px;
+    /* padding: 10px; */
+}
+</style>
